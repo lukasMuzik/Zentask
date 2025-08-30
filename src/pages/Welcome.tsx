@@ -8,6 +8,7 @@ import {ErrorMessage} from '../shared/ui/ErrorMessage';
 import {TextInput} from '../shared/ui/TextInput/TextInput';
 import {useForm} from 'react-hook-form';
 import {InputField} from '../shared/form/InputField/InputField';
+import {Checkbox} from '../shared/ui/Checkbox';
 
 const API_DOCS_HREF = 'http://localhost:3001/api/docs';
 
@@ -36,6 +37,7 @@ export function Welcome() {
           name="email"
           placeholder="Placeholder"
         />
+        <Checkbox onChange={(e) => console.log(e.target.checked)} />
       </VStack>
     </Center>
   );

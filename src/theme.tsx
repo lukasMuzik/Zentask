@@ -47,7 +47,7 @@ const theme = extendTheme({
   },
   components: {
     Button: {
-      baseStyle: () => ({
+      baseStyle: {
         bg: 'unset',
         letterSpacing: '0%',
         fontSize: '14px',
@@ -56,7 +56,7 @@ const theme = extendTheme({
         _hover: {
           bg: 'unset',
         },
-      }),
+      },
 
       sizes: {
         default: {
@@ -78,19 +78,19 @@ const theme = extendTheme({
           _hover: {
             backgroundColor: 'fill-brand-hover',
           },
-          borderRadius: props.size === 'icon' ? '1000px' : '100px',
+          borderRadius: props.size === 'icon' ? '100%' : '100px',
         }),
         secondary: (props: any) => ({
           color: 'text-primary',
           backgroundColor: 'fill-gray',
-          borderRadius: props.size === 'icon' ? '1000px' : '100px',
+          borderRadius: props.size === 'icon' ? '100%' : '100px',
         }),
         textOnly: (props: any) => ({
           color: 'text-primary',
           _hover: {
             backgroundColor: 'fill-gray',
           },
-          borderRadius: props.size === 'icon' ? '1000px' : '100px',
+          borderRadius: props.size === 'icon' ? '100%' : '100px',
         }),
       },
 
@@ -134,6 +134,31 @@ const theme = extendTheme({
       defaultProps: {
         variant: 'default',
         size: 'default',
+      },
+    },
+    Checkbox: {
+      baseStyle: {
+        control: {
+          height: '32px',
+          width: '32px',
+          backgroundColor: 'fill-white',
+          borderColor: 'border-gray',
+          borderRadius: '100%',
+
+          _hover: {
+            borderColor: 'fill-brand',
+            boxShadow: '0 0 0 4px rgba(15, 98, 254, 0.2)',
+          },
+
+          _checked: {
+            backgroundColor: 'fill-brand',
+            borderColor: 'fill-brand',
+            _hover: {
+              backgroundColor: 'fill-brand',
+              borderColor: 'fill-brand',
+            },
+          },
+        },
       },
     },
   },
