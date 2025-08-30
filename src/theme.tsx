@@ -99,6 +99,43 @@ const theme = extendTheme({
         size: 'default',
       },
     },
+    Input: {
+      baseStyle: {
+        field: {
+          fontSize: 'text.base',
+          fontWeight: 'text.base',
+          color: 'text-primary',
+          backgroundColor: 'fill-white',
+          borderRadius: '4px',
+          borderWidth: '1px',
+          px: '16px',
+          py: '12px',
+          _placeholder: {
+            color: 'text-tertiary',
+          },
+        },
+      },
+      variants: {
+        default: {
+          field: {
+            borderColor: 'border-gray',
+            _focus: {
+              borderColor: 'border-brand',
+              boxShadow: '0 0 0 4px rgba(15, 98, 254, 0.2)',
+            },
+          },
+        },
+        error: {
+          field: {
+            borderColor: 'border-danger',
+          },
+        },
+      },
+      defaultProps: {
+        variant: 'default',
+        size: 'default',
+      },
+    },
   },
   fontSizes,
   fontWeights,
