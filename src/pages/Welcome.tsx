@@ -1,5 +1,7 @@
 import {Center, Link, Text, VStack} from '@chakra-ui/react';
 import {useTranslation} from 'react-i18next';
+import {Button} from '../shared/ui/Button/Button';
+import {ReactComponent as AddIcon} from '../assets/icons/icon-add.svg';
 
 const API_DOCS_HREF = 'http://localhost:3001/api/docs';
 
@@ -15,6 +17,7 @@ export function Welcome() {
         <Link color="blue.400" href={API_DOCS_HREF} target="_blank">
           {t('welcome.link')}
         </Link>
+        <Button leftIcon={<AddIcon />}>Click me</Button>
       </VStack>
     </Center>
   );

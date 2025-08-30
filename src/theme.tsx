@@ -49,10 +49,55 @@ const theme = extendTheme({
     Button: {
       baseStyle: () => ({
         bg: 'unset',
-        backgroundColor: '#0F62FE',
-        color: '#FFFFFF',
-        borderRadius: '100px',
+        letterSpacing: '0%',
+        fontSize: '14px',
+        fontWeight: 500,
+        lineHeight: '20px',
+        _hover: {
+          bg: 'unset',
+        },
       }),
+
+      sizes: {
+        default: {
+          h: '40px',
+          px: '20px',
+          py: '6px',
+        },
+        icon: {
+          h: '40px',
+          px: '12px',
+          py: '6px',
+        },
+      },
+
+      variants: {
+        primary: (props: any) => ({
+          backgroundColor: 'fill-brand',
+          color: 'text-white',
+          _hover: {
+            backgroundColor: 'fill-brand-hover',
+          },
+          borderRadius: props.size === 'icon' ? '1000px' : '100px',
+        }),
+        secondary: (props: any) => ({
+          color: 'text-primary',
+          backgroundColor: 'fill-gray',
+          borderRadius: props.size === 'icon' ? '1000px' : '100px',
+        }),
+        textOnly: (props: any) => ({
+          color: 'text-primary',
+          _hover: {
+            backgroundColor: 'fill-gray',
+          },
+          borderRadius: props.size === 'icon' ? '1000px' : '100px',
+        }),
+      },
+
+      defaultProps: {
+        variant: 'primary',
+        size: 'default',
+      },
     },
   },
   fontSizes,
