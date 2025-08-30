@@ -31,8 +31,6 @@ const GlobalStyle = createGlobalStyle`
      font-size: 100%;
      font: inherit;
      vertical-align: baseline;
-     background-color: #E5E5E5;
-     color: #091E42;
    }
    html, body, #root{
     height: 100%;
@@ -62,14 +60,16 @@ const GlobalStyle = createGlobalStyle`
      border-spacing: 0;
    }
 
-   body {
-     line-height: 1;
-     margin: 0;
-     padding: 0;
-     font-family: Open-Sans, Helvetica, Sans-Serif;
-     font-size: 16px;
-     height: 100%;
-   }
+     body {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", Open-Sans, Helvetica, Sans-Serif;
+    font-size: 16px;
+    height: 100%;
+    background-color: #E5E5E5;
+    color: #091E42;
+  }
  `;
 
 export default GlobalStyle;
