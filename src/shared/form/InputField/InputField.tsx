@@ -1,9 +1,9 @@
 import {FieldValues, useController, UseControllerProps} from 'react-hook-form';
-import {FormControl} from '../FormControl/FormControl';
+import {FormControl} from '@form/FormControl';
 import {TextInput, TextInputProps} from '@ui/TextInput';
 
 export type TextInputFieldProps<FormData extends FieldValues> = UseControllerProps<FormData> &
-  Omit<TextInputProps, 'variant' | 'onChange' | 'onBlur' | 'value'> & {
+  Omit<TextInputProps, 'variant' | 'onChange' | 'onBlur' | 'value' | 'isInvalid'> & {
     label?: string;
     helperText?: string;
   };
@@ -34,7 +34,8 @@ export function InputField<FormData extends FieldValues>(props: TextInputFieldPr
         rightIcon={props.rightIcon}
         type={props.type}
         value={field.value ?? ''}
-        variant={fieldState.error ? 'error' : 'default'}
+        isInvalid={!!fieldState.error}
+        isDisabled={props.isDisabled}
       />
     </FormControl>
   );

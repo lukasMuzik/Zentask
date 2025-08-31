@@ -123,11 +123,9 @@ const theme = extendTheme({
               borderColor: 'border-brand',
               boxShadow: '0 0 0 4px rgba(15, 98, 254, 0.2)',
             },
-          },
-        },
-        error: {
-          field: {
-            borderColor: 'border-danger',
+            _invalid: {
+              borderColor: 'border-danger',
+            },
           },
         },
       },

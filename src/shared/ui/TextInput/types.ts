@@ -6,7 +6,6 @@ export interface InputIconType {
   onClick?: () => void;
 }
 
-export interface TextInputProps extends Omit<InputProps, 'variant'> {
-  variant?: 'default' | 'error';
+export interface TextInputProps extends Omit<InputProps, 'variant' | 'size'> {
   rightIcon?: InputIconType;
 }
