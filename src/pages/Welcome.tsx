@@ -5,7 +5,7 @@ import {Label} from '@ui/Label';
 import {HelperText} from '@ui/HelperText';
 import {ErrorMessage} from '@ui/ErrorMessage';
 import {useForm} from 'react-hook-form';
-import {InputField} from '../shared/form/InputField/InputField';
+import {InputField} from '@form/InputField';
 import {Checkbox} from '@ui/Checkbox';
 import {AddIcon, HideIcon, ShowIcon} from '../assets/icons';
 import {useState} from 'react';

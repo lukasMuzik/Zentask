@@ -16,7 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@ui/*": ["./src/shared/ui/*"]
+      "@ui/*": ["./src/shared/ui/*"],
+      "@form/*": ["./src/shared/form/*"]
     }
   },
   "include": ["backend/**/*", "./src/**/*"],

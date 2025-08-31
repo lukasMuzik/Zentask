@@ -4,6 +4,7 @@ module.exports = {
   webpack: {
     alias: {
       '@ui': path.resolve(__dirname, 'src/shared/ui'),
+      '@form': path.resolve(__dirname, 'src/shared/form'),
     },
   },
 };
