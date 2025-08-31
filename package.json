@@ -8,10 +8,10 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start-react\" \"npm run start-server\"",
-    "start-react": "react-scripts start",
+    "start-react": "craco start",
     "start-server": "ts-node backend/server.ts",
-    "build": "react-scripts build",
-    "test": "jest",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "prettify": "prettier --write --config ./.prettierrc --ignore-path ./.prettierignore .",
     "eslint": "eslint --cache --fix -c ./.eslintrc.json .",
@@ -85,7 +85,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-typescript": "^7.23.3",
+    "@craco/craco": "^7.1.0",
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/eslint-plugin-prettier": "^3.1.0",
