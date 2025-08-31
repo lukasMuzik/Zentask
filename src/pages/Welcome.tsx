@@ -1,12 +1,12 @@
 import {Center, Input, Link, Text, VStack} from '@chakra-ui/react';
 import {useTranslation} from 'react-i18next';
-import {Button} from '../shared/ui/Button';
-import {Label} from '../shared/ui/Label';
-import {HelperText} from '../shared/ui/HelperText';
-import {ErrorMessage} from '../shared/ui/ErrorMessage';
+import {Button} from '@ui/Button';
+import {Label} from '@ui/Label';
+import {HelperText} from '@ui/HelperText';
+import {ErrorMessage} from '@ui/ErrorMessage';
 import {useForm} from 'react-hook-form';
 import {InputField} from '../shared/form/InputField/InputField';
-import {Checkbox} from '../shared/ui/Checkbox';
+import {Checkbox} from '@ui/Checkbox';
 import {AddIcon, HideIcon, ShowIcon} from '../assets/icons';
 import {useState} from 'react';
 

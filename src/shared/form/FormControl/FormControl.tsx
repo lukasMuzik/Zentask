@@ -1,6 +1,6 @@
 import {Box, VStack} from '@chakra-ui/react';
-import {Label} from '../../ui/Label';
-import {HelperText} from '../../ui/HelperText';
+import {Label} from '@ui/Label';
+import {HelperText} from '@ui/HelperText';
 import {ReactNode} from 'react';
 
 export interface Props {

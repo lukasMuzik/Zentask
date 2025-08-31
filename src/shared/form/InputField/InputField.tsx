@@ -1,6 +1,6 @@
 import {FieldValues, useController, UseControllerProps} from 'react-hook-form';
 import {FormControl} from '../FormControl/FormControl';
-import {TextInput, TextInputProps} from '../../ui/TextInput';
+import {TextInput, TextInputProps} from '@ui/TextInput';
 
 export type TextInputFieldProps<FormData extends FieldValues> = UseControllerProps<FormData> &
   Omit<TextInputProps, 'variant' | 'onChange' | 'onBlur' | 'value'> & {
