@@ -6,6 +6,7 @@ import {HelperText} from '@ui/HelperText';
 import {ErrorMessage} from '@ui/ErrorMessage';
 import {useForm} from 'react-hook-form';
 import {InputField} from '@form/InputField';
+import {TextareaField} from '@form/TextareaField';
 import {Checkbox} from '@ui/Checkbox';
 import {AddIcon, HideIcon, ShowIcon} from '../assets/icons';
 import {useState} from 'react';
@@ -14,7 +15,7 @@ const API_DOCS_HREF = 'http://localhost:3001/api/docs';
 
 export function Welcome() {
   const {t} = useTranslation();
-  const {control} = useForm<{email: string}>();
+  const {control} = useForm<{email: string; textarea: string}>();
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -58,6 +59,14 @@ export function Welcome() {
             icon: showPassword ? <ShowIcon /> : <HideIcon />,
             onClick: () => setShowPassword((prev) => !prev),
           }}
+        />
+
+        <TextareaField
+          control={control}
+          helperText="Helper text"
+          label="Textarea"
+          name="textarea"
+          placeholder="Placeholder..."
         />
       </VStack>
     </Center>

@@ -136,6 +136,37 @@ const theme = extendTheme({
         size: 'default',
       },
     },
+    Textarea: {
+      baseStyle: {
+        fontSize: 'text.base',
+        fontWeight: 'text.base',
+        color: 'text-primary',
+        backgroundColor: 'fill-white',
+        borderRadius: '4px',
+        borderWidth: '1px',
+        lineHeight: '24px',
+        p: '16px',
+        _placeholder: {
+          color: 'text-tertiary',
+        },
+      },
+      variants: {
+        default: {
+          borderColor: 'border-gray',
+          _focus: {
+            borderColor: 'border-brand',
+            boxShadow: '0 0 0 4px rgba(15, 98, 254, 0.2)',
+          },
+          _invalid: {
+            borderColor: 'border-danger',
+          },
+        },
+      },
+      defaultProps: {
+        variant: 'default',
+        size: 'default',
+      },
+    },
     Checkbox: {
       baseStyle: {
         control: {
