@@ -46,3 +46,5 @@ Thumbs.db
 
 .eslintcache
 /.eslintcache
+
+src/routeTree.gen.ts

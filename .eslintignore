@@ -33,7 +33,6 @@ vscode
 # misc
 /.sass-cache
 /connect.lock
-/coverage
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
@@ -48,3 +47,5 @@ Thumbs.db
 /.eslintcache
 
 *.generated.stories.tsx
+
+src/routeTree.gen.ts
