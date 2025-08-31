@@ -10,6 +10,7 @@ import {TextareaField} from '@form/TextareaField';
 import {Checkbox} from '@ui/Checkbox';
 import {AddIcon, HideIcon, ShowIcon} from '../assets/icons';
 import {useState} from 'react';
+import {MenuItemType, OverflowMenu} from '@ui/OverflowMenu';
 
 const API_DOCS_HREF = 'http://localhost:3001/api/docs';
 
@@ -17,6 +18,12 @@ export function Welcome() {
   const {t} = useTranslation();
   const {control} = useForm<{email: string; textarea: string}>();
   const [showPassword, setShowPassword] = useState(false);
+
+  const menuItems: MenuItemType[] = [
+    {label: 'Download', icon: <AddIcon />, onClick: () => console.log('Download')},
+    {label: 'Import', icon: <AddIcon />, onClick: () => console.log('Import')},
+    {label: 'Export', icon: <AddIcon />, onClick: () => console.log('Export')},
+  ];
 
   return (
     <Center height="100vh" width="100wv" padding="10">
@@ -68,6 +75,8 @@ export function Welcome() {
           name="textarea"
           placeholder="Placeholder..."
         />
+
+        <OverflowMenu menuItems={menuItems} trigger={<Button>Trigger</Button>} />
       </VStack>
     </Center>
   );

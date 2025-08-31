@@ -190,6 +190,29 @@ const theme = extendTheme({
         },
       },
     },
+    Menu: {
+      baseStyle: {
+        list: {
+          w: '216px',
+          borderRadius: '16px',
+          border: '1px solid',
+          borderColor: 'border-gray',
+          backgroundColor: 'fill-white',
+          p: '8px',
+          boxShadow: '0px 8px 40px 0px rgba(0, 0, 0, 0.12)',
+        },
+        item: {
+          borderRadius: '4px',
+          p: '8px',
+          fontSize: 'text.small',
+          fontWeight: 'text.base',
+          backgroundColor: 'fill-white',
+          _hover: {
+            backgroundColor: 'fill-gray-lightest',
+          },
+        },
+      },
+    },
   },
   fontSizes,
   fontWeights,
