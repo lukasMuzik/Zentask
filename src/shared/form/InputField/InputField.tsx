@@ -1,6 +1,6 @@
 import {FieldValues, useController, UseControllerProps} from 'react-hook-form';
 import {FormControl} from '../FormControl/FormControl';
-import {TextInput, TextInputProps} from '../../ui/TextInput/TextInput';
+import {TextInput, TextInputProps} from '../../ui/TextInput';
 
 export type TextInputFieldProps<FormData extends FieldValues> = UseControllerProps<FormData> &
   Omit<TextInputProps, 'variant' | 'onChange' | 'onBlur' | 'value'> & {
@@ -27,12 +27,13 @@ export function InputField<FormData extends FieldValues>(props: TextInputFieldPr
       <TextInput
         autoComplete={props.autoComplete}
         name={field.name}
-        value={field.value ?? ''}
-        onChange={field.onChange}
         onBlur={field.onBlur}
-        ref={field.ref}
+        onChange={field.onChange}
         placeholder={props.placeholder}
+        ref={field.ref}
+        rightIcon={props.rightIcon}
         type={props.type}
+        value={field.value ?? ''}
         variant={fieldState.error ? 'error' : 'default'}
       />
     </FormControl>
