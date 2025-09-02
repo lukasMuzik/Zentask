@@ -32,6 +32,11 @@ const GlobalStyle = createGlobalStyle`
      font: inherit;
      vertical-align: baseline;
    }
+   
+   html {
+     font-size: 16px; 
+   }
+   
    html, body, #root{
     height: 100%;
   }
@@ -65,9 +70,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: "Inter", Open-Sans, Helvetica, Sans-Serif;
-    font-size: 16px;
     height: 100%;
-    background-color: #E5E5E5;
+    background-color: #F1F2F6;
     color: #091E42;
   }
  `;
