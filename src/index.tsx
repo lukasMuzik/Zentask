@@ -8,6 +8,9 @@ import './i18n/i18n';
 import theme from './theme';
 import {routeTree} from './routeTree.gen';
 import {createRouter, RouterProvider} from '@tanstack/react-router';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const router = createRouter({
   routeTree,
@@ -21,13 +24,15 @@ if (rootElement && !rootElement.innerHTML) {
 
   root.render(
     <StrictMode>
-      <ChakraProvider theme={theme} resetCSS>
-        <HelmetProvider>
-          <RouterProvider router={router} />
-          <GlobalStyles />
-          <WebVitals showStatusInConsoleLog />
-        </HelmetProvider>
-      </ChakraProvider>
+      <QueryClientProvider client={queryClient}>
+        <ChakraProvider theme={theme} resetCSS>
+          <HelmetProvider>
+            <RouterProvider router={router} />
+            <GlobalStyles />
+            <WebVitals showStatusInConsoleLog />
+          </HelmetProvider>
+        </ChakraProvider>
+      </QueryClientProvider>
     </StrictMode>
   );
 }
