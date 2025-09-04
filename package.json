@@ -9,7 +9,7 @@
   "scripts": {
     "start": "concurrently \"npm run start-react\" \"npm run start-server\"",
     "start-react": "craco start",
-    "start-server": "ts-node backend/server.ts",
+    "start-server": "ts-node-dev backend/server.ts",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
@@ -62,6 +62,7 @@
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.0",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "ts-pattern": "^5.0.6",
     "typescript": "5.3.3",
     "uuid": "^9.0.1",
