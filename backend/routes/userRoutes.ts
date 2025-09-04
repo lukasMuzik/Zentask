@@ -41,10 +41,10 @@ userRoutes.post('/api/login', (req: Request, res: Response) => {
 
   userDB.findOne({username}, (err: Error | null, user: User | null) => {
     if (isNotNil(err)) return res.status(500).json({error: 'Internal server error'});
-    if (isNil(user)) return res.status(401).json({error: 'User not found'});
+    if (isNil(user)) return res.status(401).json({error: 'User not found', code: 'USER_NOT_FOUND'});
 
     if (!comparePassword(password, user.password)) {
-      return res.status(401).json({error: 'Invalid credential'});
+      return res.status(401).json({error: 'Invalid credential', code: 'INVALID_CREDENTIALS'});
     }
 
     const accessToken = signAccessToken(user.id, username);
@@ -62,7 +62,8 @@ userRoutes.post('/api/refresh-token', (req: Request, res: Response) => {
   }
 
   jwt.verify(refreshToken, process.env.REFRESH_KEY, (err: any, user: any) => {
-    if (err) return res.status(401).json({error: 'Invalid refresh token'});
+    if (err)
+      return res.status(401).json({error: 'Invalid refresh token', code: 'INVALID_REFRESH_TOKEN'});
 
     const accessToken = signAccessToken(user.userId, user.username);
 
