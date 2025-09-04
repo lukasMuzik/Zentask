@@ -1,7 +1,7 @@
-import {Box, Flex, VStack, Text, Center} from '@chakra-ui/react';
+import {Box, Flex, VStack, Text, Center, Spinner} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
-import {Logo} from '@ui/Logo';
 import {useNavigate} from '@tanstack/react-router';
+import {TodosContent} from './ui/TodosContent';
 
 export function TodosPage() {
   const navigate = useNavigate();
@@ -29,19 +29,7 @@ export function TodosPage() {
         </Box>
       </Flex>
 
-      <Center>
-        <VStack spacing="1rem">
-          <Logo variant="double" />
-
-          <VStack spacing="0.75rem">
-            <Text fontSize="heading.3" fontWeight="heading.2" lineHeight="1.5rem">
-              You are amazing!
-            </Text>
-
-            <Text color="text-tertiary">There is no more task to do.</Text>
-          </VStack>
-        </VStack>
-      </Center>
+      <TodosContent />
     </VStack>
   );
 }

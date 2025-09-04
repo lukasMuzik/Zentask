@@ -4,7 +4,7 @@ const fontSizes = {
   heading: {
     1: '28px',
     2: '24px',
-    3: '20px',
+    3: '18px',
   },
   text: {
     base: '16px',
@@ -21,6 +21,18 @@ const fontWeights = {
   text: {
     base: 400,
     alternative: 500,
+  },
+};
+
+const lineHeights = {
+  heading: {
+    1: '32px',
+    2: '28px',
+    3: '24px',
+  },
+  text: {
+    base: '24px',
+    small: '20px',
   },
 };
 
@@ -216,6 +228,7 @@ const theme = extendTheme({
   },
   fontSizes,
   fontWeights,
+  lineHeights,
 });
 
 export default theme;
