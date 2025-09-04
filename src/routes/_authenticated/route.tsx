@@ -33,7 +33,7 @@ function AuthenticatedLayout() {
       </Flex>
 
       {/* TODO Main Content Card */}
-      <Box bg="fill-white" borderRadius="2rem" p="2.5rem" minH="calc(100vh - 7.5rem)">
+      <Box bg="fill-white" borderRadius="2rem" p="2.5rem">
         <Outlet />
       </Box>
     </Box>
