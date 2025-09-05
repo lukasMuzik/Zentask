@@ -1,5 +1,6 @@
 import {Helmet} from 'react-helmet-async';
 import {useTranslation} from 'react-i18next';
+import {Outlet} from '@tanstack/react-router';
 
 function App() {
   const {i18n, t} = useTranslation();
@@ -21,9 +22,7 @@ function App() {
         />
       </Helmet>
 
-      {/*
-       * start from here
-       */}
+      <Outlet />
     </>
   );
 }
