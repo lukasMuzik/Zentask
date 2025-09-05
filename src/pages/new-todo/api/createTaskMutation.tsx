@@ -2,16 +2,17 @@ import {useMutation} from '@tanstack/react-query';
 import {useNavigate} from '@tanstack/react-router';
 import {apiClient} from '../../../shared/api/client';
 import {AxiosError} from 'axios';
-import {NewTodoFormData, CreateTodoResponse} from '../model/schema';
 import {useToast} from '@chakra-ui/react';
+import {Todo} from '../../../entities/Todo';
+import {TodoFormInputs} from '../../../widgets/TodoForm';
 
 export const useCreateTodoMutation = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
   return useMutation({
-    mutationFn: async (todoData: NewTodoFormData): Promise<CreateTodoResponse> => {
-      const response = await apiClient.post<CreateTodoResponse>('/api/todo', todoData);
+    mutationFn: async (todoData: TodoFormInputs): Promise<Todo> => {
+      const response = await apiClient.post<Todo>('/api/todo', todoData);
       return response.data;
     },
     onSuccess: () => {

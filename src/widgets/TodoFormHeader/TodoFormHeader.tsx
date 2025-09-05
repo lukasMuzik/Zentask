@@ -1,7 +1,7 @@
 import {Button} from '@ui/Button';
 import {BackwardsIcon} from '../../assets/icons';
 import {Flex, Text} from '@chakra-ui/react';
-import {TodoFormHeaderProps} from './model/schema';
+import {TodoFormHeaderProps} from './model';
 
 export function TodoFormHeader(props: TodoFormHeaderProps) {
   return (

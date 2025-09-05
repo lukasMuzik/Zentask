@@ -1,4 +1,4 @@
-import {Box, Flex, VStack, Text, Center, Spinner} from '@chakra-ui/react';
+import {Box, Flex, VStack, Text} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
 import {useNavigate} from '@tanstack/react-router';
 import {TodosContent} from './ui/TodosContent';

@@ -2,13 +2,13 @@ import {VStack} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {InputField} from '@form/InputField';
-import {LoginFormData, loginSchema} from '../model/schema';
+import {LoginFormData, loginSchema} from '../model';
 import {useState} from 'react';
 // todo will add @aliases
 import {HideIcon, ShowIcon, ForwardIcon} from '../../../assets/icons';
 import {LOGIN_DEFAULT_VALUES} from '../lib/constants';
-import {useLoginMutation} from '../api/loginMutation';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useLoginMutation} from '../api/useLoginMutation';
 
 export function LoginForm() {
   const formApi = useForm<LoginFormData>({

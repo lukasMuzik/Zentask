@@ -1,11 +1,7 @@
 import {useMutation, useQueryClient} from '@tanstack/react-query';
-import {Todo} from './useTodosQuery';
 import {apiClient} from '../../../shared/api/client';
-
-export interface ToggleCompleteParams {
-  todoId: string;
-  completed: boolean;
-}
+import {Todo} from '../../../entities/Todo';
+import {ToggleCompleteParams} from '../model';
 
 const toggleTodo = async ({todoId, completed}: ToggleCompleteParams): Promise<Todo> => {
   const endpoint = completed ? `/api/todo/${todoId}/incomplete` : `/api/todo/${todoId}/complete`;

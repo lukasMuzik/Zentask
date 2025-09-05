@@ -2,7 +2,7 @@ import {useMutation} from '@tanstack/react-query';
 import {useNavigate} from '@tanstack/react-router';
 import {apiClient} from '../../../shared/api/client';
 import {AxiosError} from 'axios';
-import {LoginFormData, LoginResponse} from '../model/schema';
+import {LoginFormData, LoginResponse} from '../model';
 
 export const useLoginMutation = () => {
   const navigate = useNavigate();

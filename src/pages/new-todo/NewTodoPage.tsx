@@ -1,8 +1,7 @@
-import {Flex, Text, VStack} from '@chakra-ui/react';
-import {Button} from '@ui/Button';
-import {NewTodoForm} from './ui/newTodoForm';
-import {BackwardsIcon} from '../../assets/icons';
+import {VStack} from '@chakra-ui/react';
 import {useNavigate} from '@tanstack/react-router';
+import {TodoFormHeader} from '../../widgets/TodoFormHeader';
+import {NewTodoForm} from './ui/NewTodoForm';
 
 export function NewTodoPage() {
   const navigate = useNavigate();
@@ -13,13 +12,7 @@ export function NewTodoPage() {
 
   return (
     <VStack w="full" align="stretch" spacing="2.5rem">
-      <Flex as="header" align="center" gap="1.5rem">
-        <Button onClick={handleBack} iconOnly={<BackwardsIcon />} variant="secondary" />
-
-        <Text fontSize="heading.2" fontWeight="heading.1">
-          New Task
-        </Text>
-      </Flex>
+      <TodoFormHeader handleBack={handleBack} title="New Task" />
 
       <NewTodoForm />
     </VStack>

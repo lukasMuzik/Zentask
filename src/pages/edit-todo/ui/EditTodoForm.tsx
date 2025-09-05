@@ -3,7 +3,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {useNavigate} from '@tanstack/react-router';
 import {useEditTodoMutation} from '../api/useEditTodoMutation';
 import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '../../../widgets/TodoForm';
-import {EditTodoFormProps} from '../model/schema';
+import {EditTodoFormProps} from '../model';
 
 export function EditTodoForm(props: EditTodoFormProps) {
   const navigate = useNavigate();

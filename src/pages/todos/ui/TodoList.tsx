@@ -1,11 +1,6 @@
 import {VStack, Text, Divider} from '@chakra-ui/react';
-import {Todo} from '../api/useTodosQuery';
 import {TodoItem} from './TodoItem';
-
-interface TodoListProps {
-  title: string;
-  todoItems: Todo[];
-}
+import {TodoListProps} from '../model';
 
 export function TodoList({title, todoItems}: TodoListProps) {
   if (todoItems.length === 0) {

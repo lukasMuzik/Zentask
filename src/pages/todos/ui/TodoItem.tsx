@@ -1,16 +1,12 @@
 import {Text, Grid} from '@chakra-ui/react';
-import {Todo} from '../api/useTodosQuery';
 import {Checkbox} from '@ui/Checkbox';
 import {OverflowMenu} from '@ui/OverflowMenu';
 import {DeleteIcon, MoreIcon} from '../../../assets/icons';
 import {Button} from '@ui/Button';
-import {ToggleCompleteParams, useToggleTodoMutation} from '../api/useToggleTodoMutation';
+import {useToggleTodoMutation} from '../api/useToggleTodoMutation';
 import {useDeleteTodoMutation} from '../api/useDeleteTodoMutation';
 import {useNavigate} from '@tanstack/react-router';
-
-interface TodoItemProps {
-  todo: Todo;
-}
+import {TodoItemProps, ToggleCompleteParams} from '../model';
 
 export function TodoItem({todo}: TodoItemProps) {
   const toggleTodoMutation = useToggleTodoMutation();

@@ -1,18 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 import {apiClient} from '../../../shared/api/client';
-
-export type Todo = {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  completed: boolean;
-  userId: string;
-};
-
-export type TodosResponse = {
-  todos: Todo[];
-};
+import {TodosResponse} from '../model';
 
 export const useTodosQuery = () =>
   useQuery({

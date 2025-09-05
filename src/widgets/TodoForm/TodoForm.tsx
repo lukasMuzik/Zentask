@@ -2,7 +2,7 @@ import {Box, Flex, VStack} from '@chakra-ui/react';
 import {InputField} from '@form/InputField';
 import {TextareaField} from '@form/TextareaField';
 import {Button} from '@ui/Button';
-import {TodoFormProps} from './model/schema';
+import {TodoFormProps} from './model';
 
 export function TodoForm(props: TodoFormProps) {
   return (
