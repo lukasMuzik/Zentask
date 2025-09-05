@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const loginSchema = yup.object({
+export const authSchema = yup.object({
   username: yup
     .string()
     .required('Username is required')
@@ -13,9 +13,9 @@ export const loginSchema = yup.object({
     .max(15, 'Password must be less than 15 characters'),
 });
 
-export type LoginFormData = yup.InferType<typeof loginSchema>;
+export type AuthFormInputs = yup.InferType<typeof authSchema>;
 
-export const loginResponseSchema = yup.object({
+export const authResponseSchema = yup.object({
   accessToken: yup
     .string()
     .required('Username is required')
@@ -28,4 +28,4 @@ export const loginResponseSchema = yup.object({
     .max(15, 'Password must be less than 100 characters'),
 });
 
-export type LoginResponse = yup.InferType<typeof loginResponseSchema>;
+export type AuthResponse = yup.InferType<typeof authResponseSchema>;

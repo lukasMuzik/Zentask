@@ -2,14 +2,14 @@ import {useMutation} from '@tanstack/react-query';
 import {useNavigate} from '@tanstack/react-router';
 import {apiClient} from '../../../shared/api/client';
 import {AxiosError} from 'axios';
-import {LoginFormData, LoginResponse} from '../model';
+import {AuthFormInputs, AuthResponse} from '../model';
 
 export const useLoginMutation = () => {
   const navigate = useNavigate();
 
   return useMutation({
-    mutationFn: async (credentials: LoginFormData): Promise<LoginResponse> => {
-      const response = await apiClient.post<LoginResponse>('/api/login', credentials);
+    mutationFn: async (credentials: AuthFormInputs): Promise<AuthResponse> => {
+      const response = await apiClient.post<AuthResponse>('/api/login', credentials);
       return response.data;
     },
     // todo don't like this response because of the exposed refresh token

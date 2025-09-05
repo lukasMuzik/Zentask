@@ -2,23 +2,35 @@ import {VStack} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {InputField} from '@form/InputField';
-import {LoginFormData, loginSchema} from '../model';
+import {AuthFormInputs, authSchema} from '../model';
 import {useState} from 'react';
 // todo will add @aliases
 import {HideIcon, ShowIcon, ForwardIcon} from '../../../assets/icons';
-import {LOGIN_DEFAULT_VALUES} from '../lib/constants';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {Link} from '@tanstack/react-router';
 import {useLoginMutation} from '../api/useLoginMutation';
+import {useRegisterMutation} from '../api/useRegisterMutation';
 
-export function LoginForm() {
-  const formApi = useForm<LoginFormData>({
-    resolver: yupResolver(loginSchema),
-    defaultValues: LOGIN_DEFAULT_VALUES,
+interface AuthFormProps {
+  variant: 'login' | 'register';
+}
+
+export function AuthForm(props: AuthFormProps) {
+  const formApi = useForm<AuthFormInputs>({
+    resolver: yupResolver(authSchema),
   });
   const [showPassword, setShowPassword] = useState(false);
-  const loginMutation = useLoginMutation();
 
-  const onSubmit: SubmitHandler<LoginFormData> = (data) => {
+  const loginMutation = useLoginMutation();
+  const registerMutation = useRegisterMutation();
+
+  const onSubmit: SubmitHandler<AuthFormInputs> = (data) => {
+    if (props.variant === 'register') {
+      console.log('Registering');
+      registerMutation.mutate(data);
+      return;
+    }
+
     loginMutation.mutate(data);
   };
 
@@ -40,9 +52,16 @@ export function LoginForm() {
         />
       </VStack>
 
-      <Button type="submit" w="full" rightIcon={<ForwardIcon />}>
-        Log in
-      </Button>
+      <VStack gap="0.25rem" align="stretch">
+        <Button type="submit" w="full" rightIcon={<ForwardIcon />}>
+          {props.variant === 'register' ? 'Register' : 'Log in'}
+        </Button>
+        <Link to={props.variant === 'register' ? '/login' : '/register'}>
+          {props.variant === 'register'
+            ? 'Already have an account? Login!'
+            : "Don't have an account yet? Register!"}
+        </Link>
+      </VStack>
     </VStack>
   );
 }

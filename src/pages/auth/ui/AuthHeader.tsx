@@ -1,7 +1,7 @@
 import {Flex, Text} from '@chakra-ui/react';
 import {Logo} from '@ui/Logo';
 
-export function LoginHeader() {
+export function AuthHeader() {
   return (
     <Flex justifyContent="center" alignItems="center" py="2.5rem" px={{base: '0.5rem', sm: '0rem'}}>
       <Flex alignItems="center" gap="0.75rem">
