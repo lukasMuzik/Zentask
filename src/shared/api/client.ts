@@ -7,6 +7,7 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
 apiClient.interceptors.request.use((config) => {
@@ -23,7 +24,6 @@ apiClient.interceptors.response.use(
     const originalRequest = error.config;
 
     const data = error.response?.data;
-    console.log('apiClient', data);
 
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (data?.code === 'USER_NOT_FOUND' || data?.code === 'INVALID_CREDENTIALS') {
@@ -32,32 +32,24 @@ apiClient.interceptors.response.use(
 
       originalRequest._retry = true;
 
-      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const refreshResponse = await axios.post(`${API_BASE_URL}/api/refresh-token`, null, {
+          withCredentials: true,
+        });
 
-      if (refreshToken) {
-        try {
-          const refreshResponse = await axios.post(`${API_BASE_URL}/api/refresh-token`, {
-            refreshToken,
-          });
+        const newAccessToken = refreshResponse.data.accessToken;
 
-          const newAccessToken = refreshResponse.data.accessToken;
+        localStorage.setItem('accessToken', newAccessToken);
 
-          localStorage.setItem('accessToken', newAccessToken);
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
-          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-
-          return apiClient(originalRequest);
-        } catch (refreshError) {
-          localStorage.removeItem('accessToken');
-          localStorage.removeItem('refreshToken');
-
-          window.location.href = '/login';
-
-          return Promise.reject(refreshError);
-        }
-      } else {
+        return apiClient(originalRequest);
+      } catch (refreshError) {
         localStorage.removeItem('accessToken');
+
         window.location.href = '/login';
+
+        return Promise.reject(refreshError);
       }
     }
 

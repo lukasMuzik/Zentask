@@ -9,6 +9,7 @@ import {signAccessToken} from '../utils/signAccessToken';
 import {signRefreshToken} from '../utils/signRefreshToken';
 import {hashPassword} from '../utils/hashPassword';
 import {comparePassword} from '../utils/comparePassword';
+import {setRefreshCookie} from '../utils/cookies';
 
 const userRoutes = express.Router();
 
@@ -32,7 +33,9 @@ userRoutes.post('/api/register', (req: Request, res: Response) => {
     const accessToken = signAccessToken(newUser.id, username);
     const refreshToken = signRefreshToken(newUser.id, username);
 
-    res.status(201).json({accessToken, refreshToken});
+    setRefreshCookie(res, refreshToken);
+
+    res.status(201).json({accessToken});
   });
 });
 
@@ -50,12 +53,14 @@ userRoutes.post('/api/login', (req: Request, res: Response) => {
     const accessToken = signAccessToken(user.id, username);
     const refreshToken = signRefreshToken(user.id, username);
 
-    res.status(200).json({accessToken, refreshToken});
+    setRefreshCookie(res, refreshToken);
+
+    res.status(200).json({accessToken});
   });
 });
 
 userRoutes.post('/api/refresh-token', (req: Request, res: Response) => {
-  const refreshToken = req.body.refreshToken;
+  const refreshToken = req.cookies.refreshToken;
 
   if (isNilOrEmpty(refreshToken)) {
     return res.status(400).json({error: "Refresh token can't be empty"});
@@ -66,6 +71,9 @@ userRoutes.post('/api/refresh-token', (req: Request, res: Response) => {
       return res.status(401).json({error: 'Invalid refresh token', code: 'INVALID_REFRESH_TOKEN'});
 
     const accessToken = signAccessToken(user.userId, user.username);
+    const newRefreshToken = signRefreshToken(user.userId, user.username);
+
+    setRefreshCookie(res, newRefreshToken);
 
     return res.json({accessToken});
   });

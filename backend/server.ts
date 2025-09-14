@@ -7,14 +7,21 @@ import todoRoutes from './routes/todoRoutes';
 import userRoutes from './routes/userRoutes';
 
 import openApiDocument from './swagger/openApi.json';
+import cookieParser from 'cookie-parser';
 
 config.config({path: __dirname + '/.env'});
 
 const app = express();
 const port = 3001;
 
+app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
 app.use(todoRoutes);
 app.use(userRoutes);

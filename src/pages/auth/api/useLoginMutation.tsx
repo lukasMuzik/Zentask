@@ -12,11 +12,8 @@ export const useLoginMutation = () => {
       const response = await apiClient.post<AuthResponse>('/api/login', credentials);
       return response.data;
     },
-    // todo don't like this response because of the exposed refresh token
-    //  refresh token should be http only cookie
     onSuccess: (data) => {
       localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
 
       navigate({to: '/'});
     },
