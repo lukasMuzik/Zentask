@@ -1,7 +1,7 @@
 import {Text, Grid} from '@chakra-ui/react';
 import {Checkbox} from '@ui/Checkbox';
 import {OverflowMenu} from '@ui/OverflowMenu';
-import {DeleteIcon, MoreIcon} from '../../../assets/icons';
+import {DeleteIcon, MoreIcon} from '../../../shared/assets/icons';
 import {Button} from '@ui/Button';
 import {useToggleTodoMutation} from '../api/useToggleTodoMutation';
 import {useDeleteTodoMutation} from '../api/useDeleteTodoMutation';

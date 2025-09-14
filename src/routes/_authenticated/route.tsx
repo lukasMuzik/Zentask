@@ -1,6 +1,8 @@
 import {createFileRoute, Outlet} from '@tanstack/react-router';
 import {Box, Flex, Text, Avatar} from '@chakra-ui/react';
 import {Logo} from '@ui/Logo';
+import {MoreIcon} from '../../shared/assets/icons';
+import {OverflowMenu} from '@ui/OverflowMenu';
 
 export const Route = createFileRoute('/_authenticated')({
   component: AuthenticatedLayout,
@@ -25,11 +27,21 @@ function AuthenticatedLayout() {
           </Text>
         </Flex>
 
-        {/* TODO User Avatar */}
-        <Flex alignItems="center" gap="0.5rem">
-          <Avatar w={{base: '2.5rem', sm: '1.5rem'}} h={{base: '2.5rem', sm: '1.5rem'}} />
-          <Text display={{base: 'none', sm: 'block'}}>username</Text>
-        </Flex>
+        <OverflowMenu
+          trigger={
+            <Flex alignItems="center" gap="0.5rem">
+              <Avatar w={{base: '2.5rem', sm: '1.5rem'}} h={{base: '2.5rem', sm: '1.5rem'}} />
+              <Text display={{base: 'none', sm: 'block'}}>username</Text>
+            </Flex>
+          }
+          menuItems={[
+            {
+              label: 'Logout',
+              icon: <MoreIcon />,
+              onClick: () => console.log('logout'),
+            },
+          ]}
+        />
       </Flex>
 
       {/* TODO Main Content Card */}

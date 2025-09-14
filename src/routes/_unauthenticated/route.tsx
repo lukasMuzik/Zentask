@@ -1,6 +1,6 @@
 import {createFileRoute} from '@tanstack/react-router';
-import {AuthLayout} from '../../widgets/Auth/AuthLayout';
+import {UnauthenticatedLayout} from '../../widgets/layouts/UnauthenticatedLayout';
 
 export const Route = createFileRoute('/_unauthenticated')({
-  component: AuthLayout,
+  component: UnauthenticatedLayout,
 });

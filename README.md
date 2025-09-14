@@ -17,7 +17,7 @@ Or open [localhost:3001/api/docs](http://localhost:3001/api/docs) to see APIs yo
 
 ---
 
-![Alt text](./src/assets/readme/banner.png)
+![Alt text](src/shared/assets/readme/banner.png)
 
 **Your task will be to write a `To-Do app`.** <br/>
 You might think a to-do list isn't a challenge, and

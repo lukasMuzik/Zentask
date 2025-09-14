@@ -1,8 +1,8 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useNavigate} from '@tanstack/react-router';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {useCreateTodoMutation} from '../api/createTaskMutation';
-import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '../../../widgets/TodoForm';
+import {useCreateTodoMutation} from '../api/useCreateTodoMutation';
+import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '../../../widgets/forms/TodoForm';
 
 export function NewTodoForm() {
   const formApi = useForm<TodoFormInputs>({

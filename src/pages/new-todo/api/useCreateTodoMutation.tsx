@@ -4,7 +4,7 @@ import {apiClient} from '../../../shared/api/client';
 import {AxiosError} from 'axios';
 import {useToast} from '@chakra-ui/react';
 import {Todo} from '../../../entities/Todo';
-import {TodoFormInputs} from '../../../widgets/TodoForm';
+import {TodoFormInputs} from '../../../widgets/forms/TodoForm';
 
 export const useCreateTodoMutation = () => {
   const navigate = useNavigate();

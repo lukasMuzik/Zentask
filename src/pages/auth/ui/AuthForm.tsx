@@ -5,7 +5,7 @@ import {InputField} from '@form/InputField';
 import {AuthFormInputs, authSchema} from '../model';
 import {useState} from 'react';
 // todo will add @aliases
-import {HideIcon, ShowIcon, ForwardIcon} from '../../../assets/icons';
+import {HideIcon, ShowIcon, ForwardIcon} from '../../../shared/assets/icons';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Link} from '@tanstack/react-router';
 import {useLoginMutation} from '../api/useLoginMutation';
