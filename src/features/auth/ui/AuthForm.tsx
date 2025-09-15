@@ -26,12 +26,10 @@ export function AuthForm(props: AuthFormProps) {
 
   const onSubmit: SubmitHandler<AuthFormInputs> = (data) => {
     if (props.variant === 'register') {
-      console.log('Registering');
       registerMutation.mutate(data);
-      return;
+    } else {
+      loginMutation.mutate(data);
     }
-
-    loginMutation.mutate(data);
   };
 
   return (

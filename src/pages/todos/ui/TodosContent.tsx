@@ -1,11 +1,11 @@
 import {Center, Spinner, Text, VStack} from '@chakra-ui/react';
 import {Logo} from '@ui/Logo';
-import {useTodosQuery} from '../api/useTodosQuery';
+import {useGetTodosQuery} from '../../../entities/Todo/api/useGetTodosQuery';
 import {partition} from 'ramda';
 import {TodoList} from './TodoList';
 
 export function TodosContent() {
-  const {data, isLoading, error} = useTodosQuery();
+  const {data, isLoading, error} = useGetTodosQuery();
 
   if (isLoading) {
     return (

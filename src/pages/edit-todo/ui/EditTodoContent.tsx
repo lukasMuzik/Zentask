@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from '@tanstack/react-router';
-import {useGetTodoQuery} from '../api/useGetTodoQuery';
+import {useGetTodoQuery} from '../../../entities/Todo/api/useGetTodoQuery';
 import {VStack} from '@chakra-ui/react';
 import {EditTodoForm} from './EditTodoForm';
 import {TodoFormHeader} from '../../../widgets/headers/TodoFormHeader';

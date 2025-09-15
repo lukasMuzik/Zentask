@@ -2,7 +2,7 @@ import {useQuery} from '@tanstack/react-query';
 import {apiClient} from '../../../shared/api/client';
 import {TodosResponse} from '../model';
 
-export const useTodosQuery = () =>
+export const useGetTodosQuery = () =>
   useQuery({
     queryKey: ['todos'],
     queryFn: async (): Promise<TodosResponse> => {

@@ -1,8 +1,4 @@
-import {Todo} from '../../../entities/Todo';
-
-export interface TodosResponse {
-  todos: Todo[];
-}
+import {Todo} from '../../../entities/Todo/model';
 
 export interface TodoListProps {
   title: string;
@@ -11,9 +7,4 @@ export interface TodoListProps {
 
 export interface TodoItemProps {
   todo: Todo;
-}
-
-export interface ToggleCompleteParams {
-  todoId: string;
-  completed: boolean;
 }

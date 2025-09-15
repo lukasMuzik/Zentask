@@ -1,11 +1,13 @@
 import {useParams, useNavigate} from '@tanstack/react-router';
-import {useGetTodoQuery} from '../edit-todo/api/useGetTodoQuery';
-import {useToggleTodoMutation} from '../todos/api/useToggleTodoMutation';
-import {useDeleteTodoMutation} from '../todos/api/useDeleteTodoMutation';
+import {useGetTodoQuery} from '../../entities/Todo/api/useGetTodoQuery';
+import {useToggleTodoMutation} from '../../features/todos/toggle/api/useToggleTodoMutation';
+import {useDeleteTodoMutation} from '../../features/todos/delete/api/useDeleteTodoMutation';
 import {Box, Text, VStack, HStack, Spinner, Flex} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
 import {Checkbox} from '@ui/Checkbox';
-import {EditIcon, DeleteIcon, BackwardsIcon} from '../../shared/assets/icons';
+import {BackwardsIcon} from '../../shared/assets/icons';
+import {DetailActions} from './ui/DetailActions';
+import {DetailSection} from './ui/DetailSection';
 
 export const TodoDetailPage = () => {
   const {todoId} = useParams({from: '/_authenticated/detail/$todoId'});
@@ -54,37 +56,21 @@ export const TodoDetailPage = () => {
       </Flex>
 
       <VStack spacing="6" align="stretch">
-        <VStack align="stretch" spacing="3">
-          <Text fontSize="lg" fontWeight="medium" color="text-primary">
-            Popis
-          </Text>
-
+        <DetailSection title="Popis">
           <Text fontSize="md" color="text-secondary" lineHeight="1.6" whiteSpace="pre-wrap">
             {todo.description}
           </Text>
-        </VStack>
+        </DetailSection>
 
-        <VStack align="stretch" spacing="3">
-          <Text fontSize="lg" fontWeight="medium" color="text-primary">
-            Stav
-          </Text>
-
+        <DetailSection title="Stav">
           <HStack spacing="3">
             <Checkbox isChecked={todo.completed} onChange={handleToggleComplete} />
 
             <Text color="text-secondary">{todo.completed ? 'Dokončeno' : 'Nedokončeno'}</Text>
           </HStack>
-        </VStack>
+        </DetailSection>
 
-        <HStack spacing="4" pt="4">
-          <Button leftIcon={<EditIcon />} variant="primary" onClick={handleEdit}>
-            Upravit úkol
-          </Button>
-
-          <Button leftIcon={<DeleteIcon />} variant="secondary" onClick={handleDelete}>
-            Smazat úkol
-          </Button>
-        </HStack>
+        <DetailActions onEdit={handleEdit} onDelete={handleDelete} />
       </VStack>
     </Box>
   );

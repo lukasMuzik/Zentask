@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from '@tanstack/react-query';
-import {apiClient} from '../../../shared/api/client';
-import {Todo} from '../../../entities/Todo';
+import {apiClient} from '../../../../shared/api/client';
+import {Todo} from '../../../../entities/Todo/model';
 import {ToggleCompleteParams} from '../model';
 
 const toggleTodo = async ({todoId, completed}: ToggleCompleteParams): Promise<Todo> => {

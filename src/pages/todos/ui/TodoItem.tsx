@@ -1,21 +1,15 @@
 import {Text, Grid, Box} from '@chakra-ui/react';
-import {Checkbox} from '@ui/Checkbox';
 import {OverflowMenu} from '@ui/OverflowMenu';
 import {DeleteIcon, MoreIcon} from '../../../shared/assets/icons';
 import {Button} from '@ui/Button';
-import {useToggleTodoMutation} from '../api/useToggleTodoMutation';
-import {useDeleteTodoMutation} from '../api/useDeleteTodoMutation';
+import {useDeleteTodoMutation} from '../../../features/todos/delete/api/useDeleteTodoMutation';
 import {useNavigate} from '@tanstack/react-router';
-import {TodoItemProps, ToggleCompleteParams} from '../model';
+import {TodoItemProps} from '../model';
+import {ToggleCompleteCheckbox} from '../../../features/todos/toggle/ui/ToggleCompleteCheckbox';
 
 export function TodoItem({todo}: TodoItemProps) {
-  const toggleTodoMutation = useToggleTodoMutation();
   const deleteTodoMutation = useDeleteTodoMutation();
   const navigate = useNavigate();
-
-  const handleToggleComplete = ({todoId, completed}: ToggleCompleteParams) => {
-    toggleTodoMutation.mutate({todoId, completed});
-  };
 
   const handleEdit = (todoId: string) => {
     navigate({to: `/edit/$todoId`, params: {todoId}});
@@ -39,10 +33,7 @@ export function TodoItem({todo}: TodoItemProps) {
       onClick={() => handleViewDetail(todo.id)}
     >
       <Box onClick={(e) => e.stopPropagation()}>
-        <Checkbox
-          isChecked={todo.completed}
-          onChange={() => handleToggleComplete({todoId: todo.id, completed: todo.completed})}
-        />
+        <ToggleCompleteCheckbox todoId={todo.id} completed={todo.completed} />
       </Box>
 
       <Text color="text-primary" fontSize="18px" fontWeight="heading.3" lineHeight="text.base">

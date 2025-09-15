@@ -1,5 +1,5 @@
 import {Box, Text} from '@chakra-ui/react';
-import {AuthForm} from './AuthForm';
+import {AuthForm} from '../../../features/auth/ui/AuthForm';
 
 export function LoginContent() {
   return (
