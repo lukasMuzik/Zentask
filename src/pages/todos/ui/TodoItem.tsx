@@ -1,4 +1,4 @@
-import {Text, Grid} from '@chakra-ui/react';
+import {Text, Grid, Box} from '@chakra-ui/react';
 import {Checkbox} from '@ui/Checkbox';
 import {OverflowMenu} from '@ui/OverflowMenu';
 import {DeleteIcon, MoreIcon} from '../../../shared/assets/icons';
@@ -21,6 +21,10 @@ export function TodoItem({todo}: TodoItemProps) {
     navigate({to: `/edit/$todoId`, params: {todoId}});
   };
 
+  const handleViewDetail = (todoId: string) => {
+    navigate({to: `/detail/$todoId`, params: {todoId}});
+  };
+
   const handleDelete = (todoId: string) => {
     deleteTodoMutation.mutate(todoId);
   };
@@ -31,11 +35,15 @@ export function TodoItem({todo}: TodoItemProps) {
       templateRows="auto auto"
       columnGap="1rem"
       alignItems="center"
+      _hover={{cursor: 'pointer'}}
+      onClick={() => handleViewDetail(todo.id)}
     >
-      <Checkbox
-        isChecked={todo.completed}
-        onChange={() => handleToggleComplete({todoId: todo.id, completed: todo.completed})}
-      />
+      <Box onClick={(e) => e.stopPropagation()}>
+        <Checkbox
+          isChecked={todo.completed}
+          onChange={() => handleToggleComplete({todoId: todo.id, completed: todo.completed})}
+        />
+      </Box>
 
       <Text color="text-primary" fontSize="18px" fontWeight="heading.3" lineHeight="text.base">
         {todo.title}
