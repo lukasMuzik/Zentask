@@ -8,8 +8,7 @@ import {useState} from 'react';
 import {HideIcon, ShowIcon, ForwardIcon} from '../../../shared/assets/icons';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Link} from '@tanstack/react-router';
-import {useLoginMutation} from '../api/useLoginMutation';
-import {useRegisterMutation} from '../api/useRegisterMutation';
+import {useAuthentication} from '../hooks/useAuthentication';
 
 interface AuthFormProps {
   variant: 'login' | 'register';
@@ -19,17 +18,12 @@ export function AuthForm(props: AuthFormProps) {
   const formApi = useForm<AuthFormInputs>({
     resolver: yupResolver(authSchema),
   });
+
   const [showPassword, setShowPassword] = useState(false);
+  const {authenticate} = useAuthentication();
 
-  const loginMutation = useLoginMutation();
-  const registerMutation = useRegisterMutation();
-
-  const onSubmit: SubmitHandler<AuthFormInputs> = (data) => {
-    if (props.variant === 'register') {
-      registerMutation.mutate(data);
-    } else {
-      loginMutation.mutate(data);
-    }
+  const onSubmit: SubmitHandler<AuthFormInputs> = async (data) => {
+    await authenticate(data, props.variant);
   };
 
   return (
@@ -54,6 +48,7 @@ export function AuthForm(props: AuthFormProps) {
         <Button type="submit" w="full" rightIcon={<ForwardIcon />}>
           {props.variant === 'register' ? 'Register' : 'Log in'}
         </Button>
+
         <Link to={props.variant === 'register' ? '/login' : '/register'}>
           {props.variant === 'register'
             ? 'Already have an account? Login!'
