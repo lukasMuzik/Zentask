@@ -12,7 +12,7 @@ import cookieParser from 'cookie-parser';
 config.config({path: __dirname + '/.env'});
 
 const app = express();
-const port = 3001;
+const port = 3002;
 
 app.use(cookieParser());
 app.use(express.json());

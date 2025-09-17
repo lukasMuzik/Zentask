@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {ERROR_CODES} from './errorCodes';
 
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = 'http://localhost:3002';
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -26,7 +27,10 @@ apiClient.interceptors.response.use(
     const data = error.response?.data;
 
     if (error.response?.status === 401 && !originalRequest._retry) {
-      if (data?.code === 'USER_NOT_FOUND' || data?.code === 'INVALID_CREDENTIALS') {
+      if (
+        data?.error === ERROR_CODES.USER_NOT_FOUND ||
+        data?.error === ERROR_CODES.INVALID_CREDENTIALS
+      ) {
         return Promise.reject(error);
       }
 
