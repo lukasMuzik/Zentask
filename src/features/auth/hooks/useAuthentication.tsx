@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {useNavigate} from '@tanstack/react-router';
 import {AuthFormInputs} from '../model';
 import {useLoginMutation} from '../api/useLoginMutation';
@@ -7,17 +6,19 @@ import useToast from '../../../shared/hooks/useToast';
 import axios from 'axios';
 import {Error} from '../../../shared/api/types';
 import {ERROR_CODES} from '../../../shared/api/errorCodes';
+import {useAuth} from '../../../app/providers/AuthProvider/AuthProvider';
 
 export const useAuthentication = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
+  const {login} = useAuth();
 
   const loginMutation = useLoginMutation();
   const registerMutation = useRegisterMutation();
 
-  const handleAuthSuccess = (accessToken: string) => {
+  const handleAuthSuccess = async (accessToken: string) => {
     localStorage.setItem('accessToken', accessToken);
+    login(accessToken);
     navigate({to: '/'});
   };
 
@@ -38,13 +39,11 @@ export const useAuthentication = () => {
   };
 
   const authenticate = async (data: AuthFormInputs, variant: 'login' | 'register') => {
-    setIsLoading(true);
-
     try {
       const mutation = variant === 'login' ? loginMutation : registerMutation;
       const {accessToken} = await mutation.mutateAsync(data);
 
-      handleAuthSuccess(accessToken);
+      await handleAuthSuccess(accessToken);
     } catch (e) {
       if (axios.isAxiosError(e)) {
         const error: Error = e;
@@ -53,13 +52,10 @@ export const useAuthentication = () => {
       } else {
         toast.error('Authentication failed. Please try again.');
       }
-    } finally {
-      setIsLoading(false);
     }
   };
 
   return {
     authenticate,
-    isLoading: isLoading || loginMutation.isPending || registerMutation.isPending,
   };
 };

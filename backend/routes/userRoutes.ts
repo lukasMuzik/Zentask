@@ -9,7 +9,7 @@ import {signAccessToken} from '../utils/signAccessToken';
 import {signRefreshToken} from '../utils/signRefreshToken';
 import {hashPassword} from '../utils/hashPassword';
 import {comparePassword} from '../utils/comparePassword';
-import {setRefreshCookie} from '../utils/cookies';
+import {clearRefreshCookie, setRefreshCookie} from '../utils/cookies';
 import {ERROR_CODES} from '../error-codes/errorCodes';
 
 const userRoutes = express.Router();
@@ -77,6 +77,11 @@ userRoutes.post('/api/refresh-token', (req: Request, res: Response) => {
 
     return res.json({accessToken});
   });
+});
+
+userRoutes.post('/api/logout', (_, res: Response) => {
+  clearRefreshCookie(res);
+  return res.sendStatus(204);
 });
 
 export default userRoutes;

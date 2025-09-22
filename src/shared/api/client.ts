@@ -36,27 +36,33 @@ apiClient.interceptors.response.use(
 
       originalRequest._retry = true;
 
-      try {
-        const refreshResponse = await axios.post(`${API_BASE_URL}/api/refresh-token`, null, {
-          withCredentials: true,
-        });
+      const success = await tryRefreshToken();
 
-        const newAccessToken = refreshResponse.data.accessToken;
-
-        localStorage.setItem('accessToken', newAccessToken);
-
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-
+      if (success) {
+        const newToken = localStorage.getItem('accessToken');
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
         return apiClient(originalRequest);
-      } catch (refreshError) {
-        localStorage.removeItem('accessToken');
-
-        window.location.href = '/login';
-
-        return Promise.reject(refreshError);
+      } else {
+        return Promise.reject(error);
       }
     }
 
     return Promise.reject(error);
   }
 );
+
+export async function tryRefreshToken() {
+  try {
+    const refreshResponse = await axios.post(`${API_BASE_URL}/api/refresh-token`, null, {
+      withCredentials: true,
+    });
+
+    const newAccessToken = refreshResponse.data.accessToken;
+    localStorage.setItem('accessToken', newAccessToken);
+
+    return true;
+  } catch (error) {
+    localStorage.removeItem('accessToken');
+    return false;
+  }
+}
