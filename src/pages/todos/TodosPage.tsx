@@ -3,6 +3,7 @@ import {Button} from '@ui/Button';
 import {useNavigate} from '@tanstack/react-router';
 import {TodosContent} from './ui/TodosContent';
 import {useAuth} from '../../app/providers/AuthProvider/AuthProvider';
+import {getFormattedDate} from '../../shared/utils/formatters/dateFormatter/dateFormatter';
 
 export function TodosPage() {
   const navigate = useNavigate();
@@ -17,12 +18,7 @@ export function TodosPage() {
           </Text>
 
           <Text color="text-secondary" fontSize="text.small">
-            {new Date().toLocaleDateString('cs-CZ', {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
+            {getFormattedDate()}
           </Text>
         </Box>
 
