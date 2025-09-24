@@ -1,12 +1,12 @@
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {apiClient} from '@shared/api/client';
-import {useNavigate} from '@tanstack/react-router';
-import {Todo} from '../../../entities/Todo/model';
+import {Todo} from '@entities/Todo/model';
 import {TodoFormInputs} from '@widgets/forms/TodoForm';
+import useToast from '@shared/hooks/useToast';
 
 export const useEditTodoMutation = () => {
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  const toast = useToast();
 
   return useMutation({
     mutationFn: async ({todoId, data}: {todoId: string; data: TodoFormInputs}): Promise<Todo> => {
@@ -15,10 +15,9 @@ export const useEditTodoMutation = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey: ['todos']});
-      navigate({to: '/'});
     },
-    onError: (error) => {
-      console.error('Chyba při aktualizaci todo:', error);
+    onError: () => {
+      toast.error('editTodo error');
     },
   });
 };

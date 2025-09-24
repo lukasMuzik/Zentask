@@ -2,17 +2,17 @@ import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {apiClient} from '@shared/api/client';
 import {Todo} from '@entities/Todo/model';
 import {ToggleCompleteParams} from '../model';
+import useToast from '@shared/hooks/useToast';
 
 const toggleTodo = async ({todoId, completed}: ToggleCompleteParams): Promise<Todo> => {
   const endpoint = completed ? `/api/todo/${todoId}/incomplete` : `/api/todo/${todoId}/complete`;
-
   const response = await apiClient.post(endpoint);
-  console.log(response);
   return response.data;
 };
 
 export const useToggleTodoMutation = () => {
   const queryClient = useQueryClient();
+  const toast = useToast();
 
   return useMutation({
     mutationFn: toggleTodo,
@@ -21,8 +21,8 @@ export const useToggleTodoMutation = () => {
 
       queryClient.invalidateQueries({queryKey: ['todo', variables.todoId]});
     },
-    onError: (error) => {
-      console.error('Failed to toggle todo completion:', error);
+    onError: () => {
+      toast.error('error while toggle');
     },
   });
 };

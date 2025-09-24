@@ -1,13 +1,11 @@
-import {useMutation} from '@tanstack/react-query';
-import {useNavigate} from '@tanstack/react-router';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {apiClient} from '@shared/api/client';
-import {AxiosError} from 'axios';
-import {useToast} from '@chakra-ui/react';
 import {Todo} from '@entities/Todo/model';
 import {TodoFormInputs} from '@widgets/forms/TodoForm';
+import useToast from '@shared/hooks/useToast';
 
 export const useCreateTodoMutation = () => {
-  const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const toast = useToast();
 
   return useMutation({
@@ -16,19 +14,10 @@ export const useCreateTodoMutation = () => {
       return response.data;
     },
     onSuccess: () => {
-      toast({
-        title: 'Success',
-        duration: 3000,
-        isClosable: true,
-      });
-      navigate({to: '/'});
+      queryClient.invalidateQueries({queryKey: ['todos']});
     },
-    onError: (
-      error: AxiosError<{
-        error: string;
-      }>
-    ) => {
-      console.error('Vytvoření úkolu selhalo:', error.response?.data?.error || error.message);
+    onError: () => {
+      toast.error('createTodo error');
     },
   });
 };

@@ -16,6 +16,8 @@ export function EditTodoForm(props: EditTodoFormProps) {
 
   const onSubmit: SubmitHandler<TodoFormInputs> = (data) => {
     editTodoMutation.mutate({todoId: props.todoId, data});
+
+    navigate({to: '/'});
   };
 
   const handleNavigateToTodos = () => navigate({to: '/'});

@@ -7,6 +7,7 @@ import axios from 'axios';
 import {Error} from '@shared/api/types';
 import {ERROR_CODES} from '@shared/api/errorCodes';
 import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
+import {match} from 'ts-pattern';
 
 export const useAuthentication = () => {
   const navigate = useNavigate();
@@ -23,19 +24,17 @@ export const useAuthentication = () => {
   };
 
   const handleAuthError = (error: Error) => {
-    switch (error.response?.data?.error) {
-      case ERROR_CODES.USER_NOT_FOUND:
-        toast.error('User not found. Please check your credentials.');
-        break;
-      case ERROR_CODES.INVALID_CREDENTIALS:
-        toast.error('Invalid credentials. Please check your credentials.');
-        break;
-      case ERROR_CODES.USERNAME_TAKEN:
-        toast.error('Username is already taken. Please choose a different username.');
-        break;
-      default:
-        toast.error('Authentication failed. Please try again.');
-    }
+    match(error.response?.data?.error)
+      .with(ERROR_CODES.USER_NOT_FOUND, () =>
+        toast.error('User not found. Please check your credentials.')
+      )
+      .with(ERROR_CODES.INVALID_CREDENTIALS, () =>
+        toast.error('Invalid credentials. Please check your credentials.')
+      )
+      .with(ERROR_CODES.USERNAME_TAKEN, () =>
+        toast.error('Username is already taken. Please choose a different username.')
+      )
+      .otherwise(() => toast.error('Authentication failed. Please try again.'));
   };
 
   const authenticate = async (data: AuthFormInputs, variant: 'login' | 'register') => {

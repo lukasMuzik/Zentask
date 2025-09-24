@@ -15,6 +15,8 @@ export function NewTodoForm() {
 
   const onSubmit: SubmitHandler<TodoFormInputs> = (data) => {
     createTodoMutation.mutate(data);
+
+    handleNavigateToTodos();
   };
 
   return (
