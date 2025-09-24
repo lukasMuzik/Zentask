@@ -1,66 +1,37 @@
 import {Center, Spinner, Text, VStack} from '@chakra-ui/react';
-import {Logo} from '@ui/Logo';
 import {useGetTodosQuery} from '../../../entities/Todo/api/useGetTodosQuery';
 import {partition} from 'ramda';
 import {TodoList} from './TodoList';
+import {match} from 'ts-pattern';
+import {TasksFinished} from './TasksFinished';
 
 export function TodosContent() {
-  const {data, isLoading, error} = useGetTodosQuery();
-
-  if (isLoading) {
-    return (
-      <Center h="100vh">
-        <Spinner size="xl" />
-      </Center>
-    );
-  }
-
-  if (error) {
-    return (
-      <Center h="100vh">
-        <Text color="red.500">Chyba při načítání úkolů</Text>
-      </Center>
-    );
-  }
+  const {data, isLoading, isError} = useGetTodosQuery();
 
   const todos = data?.todos || [];
   const [completed, incompleted] = partition((todo) => todo.completed, todos);
 
-  if (todos.length === 0) {
-    return (
+  return match({isLoading, isError, todosLength: todos.length})
+    .with({isLoading: true}, () => (
       <Center>
-        <VStack spacing="1rem">
-          <Logo variant="double" />
-          <VStack spacing="0.75rem">
-            <Text fontSize="heading.3" fontWeight="heading.2" lineHeight="1.5rem">
-              You are amazing!
-            </Text>
-            <Text color="text-tertiary">There is no more task to do.</Text>
-          </VStack>
-        </VStack>
+        <Spinner size="xl" />
       </Center>
-    );
-  }
+    ))
+    .with({isError: true}, () => (
+      <Center h="100vh">
+        <Text color="red.500">Error occurred while loading tasks.</Text>
+      </Center>
+    ))
+    .with({todosLength: 0}, () => <TasksFinished />)
+    .otherwise(() => (
+      <VStack align="stretch" w="full" spacing="2rem">
+        {match(incompleted.length)
+          .with(0, () => <TasksFinished />)
+          .otherwise(() => (
+            <TodoList title="To-do" todoItems={incompleted} />
+          ))}
 
-  return (
-    <VStack align="stretch" w="full" spacing="2rem">
-      {/*todo ts-pattern*/}
-      {incompleted.length === 0 ? (
-        <Center>
-          <VStack spacing="1rem">
-            <Logo variant="double" />
-            <VStack spacing="0.75rem">
-              <Text fontSize="heading.3" fontWeight="heading.2" lineHeight="1.5rem">
-                You are amazing!
-              </Text>
-              <Text color="text-tertiary">There is no more task to do.</Text>
-            </VStack>
-          </VStack>
-        </Center>
-      ) : (
-        <TodoList title="To-do" todoItems={incompleted} />
-      )}
-      <TodoList title="Completed" todoItems={completed} />
-    </VStack>
-  );
+        <TodoList title="Completed" todoItems={completed} />
+      </VStack>
+    ));
 }
