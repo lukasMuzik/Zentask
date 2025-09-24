@@ -5,10 +5,10 @@ import {InputField} from '@form/InputField';
 import {AuthFormInputs, authSchema} from '../model';
 import {useState} from 'react';
 // todo will add @aliases
-import {HideIcon, ShowIcon, ForwardIcon} from '../../../shared/assets/icons';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Link} from '@tanstack/react-router';
 import {useAuthentication} from '../hooks/useAuthentication';
+import {ForwardIcon, HideIcon, ShowIcon} from '@shared/assets/icons';
 
 interface AuthFormProps {
   variant: 'login' | 'register';

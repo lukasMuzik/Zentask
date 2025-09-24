@@ -2,7 +2,7 @@ import {SubmitHandler, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useNavigate} from '@tanstack/react-router';
 import {useEditTodoMutation} from '../api/useEditTodoMutation';
-import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '../../../widgets/forms/TodoForm';
+import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '@widgets/forms/TodoForm';
 import {EditTodoFormProps} from '../model';
 
 export function EditTodoForm(props: EditTodoFormProps) {

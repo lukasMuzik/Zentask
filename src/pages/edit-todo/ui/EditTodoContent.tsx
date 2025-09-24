@@ -1,8 +1,8 @@
 import {useNavigate, useParams} from '@tanstack/react-router';
-import {useGetTodoQuery} from '../../../entities/Todo/api/useGetTodoQuery';
+import {useGetTodoQuery} from '@entities/Todo/api/useGetTodoQuery';
 import {VStack} from '@chakra-ui/react';
 import {EditTodoForm} from './EditTodoForm';
-import {TodoFormHeader} from '../../../widgets/headers/TodoFormHeader';
+import {TodoFormHeader} from '@widgets/headers/TodoFormHeader';
 
 export function EditTodoContent() {
   const {todoId} = useParams({from: '/_authenticated/edit/$todoId'});

@@ -1,5 +1,5 @@
 import {Button} from '@ui/Button';
-import {BackwardsIcon} from '../../../shared/assets/icons';
+import {BackwardsIcon} from '@shared/assets/icons';
 import {Flex, Text} from '@chakra-ui/react';
 import {TodoFormHeaderProps} from './model';
 

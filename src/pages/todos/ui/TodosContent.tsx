@@ -1,5 +1,5 @@
 import {Center, Spinner, Text, VStack} from '@chakra-ui/react';
-import {useGetTodosQuery} from '../../../entities/Todo/api/useGetTodosQuery';
+import {useGetTodosQuery} from '@entities/Todo/api/useGetTodosQuery';
 import {partition} from 'ramda';
 import {TodoList} from './TodoList';
 import {match} from 'ts-pattern';

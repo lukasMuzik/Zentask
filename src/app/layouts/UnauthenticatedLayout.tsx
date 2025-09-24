@@ -1,4 +1,4 @@
-import {AuthHeader} from '../../pages/auth/ui/AuthHeader';
+import {AuthHeader} from '@pages/auth/ui/AuthHeader';
 import {Box, Center} from '@chakra-ui/react';
 import {Outlet} from '@tanstack/react-router';
 

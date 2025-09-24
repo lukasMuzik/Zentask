@@ -17,7 +17,14 @@
     "jsx": "react-jsx",
     "paths": {
       "@ui/*": ["./src/shared/ui/*"],
-      "@form/*": ["./src/shared/form/*"]
+      "@form/*": ["./src/shared/form/*"],
+      "@app/*": ["./src/app/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@features/*": ["./src/features/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@routes/*": ["./src/routes/*"]
     }
   },
   "include": ["backend/**/*", "./src/**/*"],

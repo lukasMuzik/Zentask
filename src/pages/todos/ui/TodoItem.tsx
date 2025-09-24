@@ -1,11 +1,11 @@
 import {Text, Grid, Box} from '@chakra-ui/react';
 import {OverflowMenu} from '@ui/OverflowMenu';
-import {DeleteIcon, MoreIcon} from '../../../shared/assets/icons';
+import {DeleteIcon, MoreIcon} from '@shared/assets/icons';
 import {Button} from '@ui/Button';
-import {useDeleteTodoMutation} from '../../../features/todos/delete/api/useDeleteTodoMutation';
+import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMutation';
 import {useNavigate} from '@tanstack/react-router';
 import {TodoItemProps} from '../model';
-import {ToggleCompleteCheckbox} from '../../../features/todos/toggle/ui/ToggleCompleteCheckbox';
+import {ToggleCompleteCheckbox} from '@features/todos/toggle/ui/ToggleCompleteCheckbox';
 
 export function TodoItem({todo}: TodoItemProps) {
   const deleteTodoMutation = useDeleteTodoMutation();

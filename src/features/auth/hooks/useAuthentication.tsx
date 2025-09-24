@@ -4,9 +4,9 @@ import {useLoginMutation} from '../api/useLoginMutation';
 import {useRegisterMutation} from '../api/useRegisterMutation';
 import useToast from '../../../shared/hooks/useToast';
 import axios from 'axios';
-import {Error} from '../../../shared/api/types';
-import {ERROR_CODES} from '../../../shared/api/errorCodes';
-import {useAuth} from '../../../app/providers/AuthProvider/AuthProvider';
+import {Error} from '@shared/api/types';
+import {ERROR_CODES} from '@shared/api/errorCodes';
+import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
 
 export const useAuthentication = () => {
   const navigate = useNavigate();

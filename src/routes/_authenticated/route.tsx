@@ -1,10 +1,10 @@
 import {createFileRoute, Outlet, useNavigate} from '@tanstack/react-router';
 import {Box, Flex, Text, Avatar} from '@chakra-ui/react';
 import {Logo} from '@ui/Logo';
-import {MoreIcon} from '../../shared/assets/icons';
+import {MoreIcon} from '@shared/assets/icons';
 import {OverflowMenu} from '@ui/OverflowMenu';
-import {useAuth} from '../../app/providers/AuthProvider/AuthProvider';
-import {useLogoutMutation} from '../../features/auth/api/useLogoutMutation';
+import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
+import {useLogoutMutation} from '@features/auth/api/useLogoutMutation';
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async ({context}) => {

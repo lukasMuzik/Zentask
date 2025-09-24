@@ -9,7 +9,7 @@ import theme from './theme';
 import {routeTree} from './routeTree.gen';
 import {createRouter, RouterProvider} from '@tanstack/react-router';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {AuthProvider, useAuth} from './app/providers/AuthProvider/AuthProvider';
+import {AuthProvider, useAuth} from '@app/providers/AuthProvider/AuthProvider';
 
 const queryClient = new QueryClient();
 

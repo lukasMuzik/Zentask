@@ -1,11 +1,11 @@
 import {useParams, useNavigate} from '@tanstack/react-router';
-import {useGetTodoQuery} from '../../entities/Todo/api/useGetTodoQuery';
-import {useToggleTodoMutation} from '../../features/todos/toggle/api/useToggleTodoMutation';
-import {useDeleteTodoMutation} from '../../features/todos/delete/api/useDeleteTodoMutation';
+import {useGetTodoQuery} from '@entities/Todo/api/useGetTodoQuery';
+import {useToggleTodoMutation} from '@features/todos/toggle/api/useToggleTodoMutation';
+import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMutation';
 import {Box, Text, VStack, HStack, Spinner, Flex, Center} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
 import {Checkbox} from '@ui/Checkbox';
-import {BackwardsIcon} from '../../shared/assets/icons';
+import {BackwardsIcon} from '@shared/assets/icons';
 import {DetailActions} from './ui/DetailActions';
 import {DetailSection} from './ui/DetailSection';
 import {match, P} from 'ts-pattern';

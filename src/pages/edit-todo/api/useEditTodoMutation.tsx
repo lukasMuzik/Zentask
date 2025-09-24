@@ -1,8 +1,8 @@
 import {useMutation, useQueryClient} from '@tanstack/react-query';
-import {apiClient} from '../../../shared/api/client';
+import {apiClient} from '@shared/api/client';
 import {useNavigate} from '@tanstack/react-router';
 import {Todo} from '../../../entities/Todo/model';
-import {TodoFormInputs} from '../../../widgets/forms/TodoForm';
+import {TodoFormInputs} from '@widgets/forms/TodoForm';
 
 export const useEditTodoMutation = () => {
   const queryClient = useQueryClient();

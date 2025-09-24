@@ -2,8 +2,8 @@ import {Box, Flex, VStack, Text} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
 import {useNavigate} from '@tanstack/react-router';
 import {TodosContent} from './ui/TodosContent';
-import {useAuth} from '../../app/providers/AuthProvider/AuthProvider';
-import {getFormattedDate} from '../../shared/utils/formatters/dateFormatter/dateFormatter';
+import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
+import {getFormattedDate} from '@shared/utils/formatters/dateFormatter/dateFormatter';
 
 export function TodosPage() {
   const navigate = useNavigate();

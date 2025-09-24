@@ -1,4 +1,4 @@
-import {Todo} from '../../../entities/Todo/model';
+import {Todo} from '@entities/Todo/model';
 
 export interface TodoListProps {
   title: string;

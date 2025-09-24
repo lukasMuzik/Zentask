@@ -1,6 +1,6 @@
 import {HStack} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
-import {EditIcon, DeleteIcon} from '../../../shared/assets/icons';
+import {EditIcon, DeleteIcon} from '@shared/assets/icons';
 import {DetailActionsProps} from '../model';
 
 export function DetailActions(props: DetailActionsProps) {

@@ -1,10 +1,10 @@
 import {useMutation} from '@tanstack/react-query';
 import {useNavigate} from '@tanstack/react-router';
-import {apiClient} from '../../../shared/api/client';
+import {apiClient} from '@shared/api/client';
 import {AxiosError} from 'axios';
 import {useToast} from '@chakra-ui/react';
-import {Todo} from '../../../entities/Todo/model';
-import {TodoFormInputs} from '../../../widgets/forms/TodoForm';
+import {Todo} from '@entities/Todo/model';
+import {TodoFormInputs} from '@widgets/forms/TodoForm';
 
 export const useCreateTodoMutation = () => {
   const navigate = useNavigate();

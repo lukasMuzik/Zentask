@@ -1,6 +1,6 @@
 import {useNavigate} from '@tanstack/react-router';
 import {VStack} from '@chakra-ui/react';
-import {TodoFormHeader} from '../../../widgets/headers/TodoFormHeader';
+import {TodoFormHeader} from '@widgets/headers/TodoFormHeader';
 import {NewTodoForm} from './NewTodoForm';
 
 export function NewTodoContent() {

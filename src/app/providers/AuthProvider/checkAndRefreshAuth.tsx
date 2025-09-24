@@ -1,6 +1,6 @@
 import {User} from './types';
 import {decodeToken, isTokenValid} from './utils';
-import {tryRefreshToken} from '../../../shared/api/client';
+import {tryRefreshToken} from '@shared/api/client';
 
 export async function checkAndRefreshAuth(): Promise<User | null> {
   const token = localStorage.getItem('accessToken');
