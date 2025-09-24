@@ -9,6 +9,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {Link} from '@tanstack/react-router';
 import {useAuthentication} from '../hooks/useAuthentication';
 import {ForwardIcon, HideIcon, ShowIcon} from '@shared/assets/icons';
+import {useTranslation} from 'react-i18next';
 
 interface AuthFormProps {
   variant: 'login' | 'register';
@@ -18,6 +19,7 @@ export function AuthForm(props: AuthFormProps) {
   const formApi = useForm<AuthFormInputs>({
     resolver: yupResolver(authSchema),
   });
+  const {t} = useTranslation('auth');
 
   const [showPassword, setShowPassword] = useState(false);
   const {authenticate} = useAuthentication();
@@ -29,11 +31,16 @@ export function AuthForm(props: AuthFormProps) {
   return (
     <VStack as="form" spacing="2.5rem" align="stretch" onSubmit={formApi.handleSubmit(onSubmit)}>
       <VStack spacing="1.5rem">
-        <InputField control={formApi.control} isRequired label="Username" name="username" />
+        <InputField
+          control={formApi.control}
+          isRequired
+          label={t('authForm.username')}
+          name="username"
+        />
 
         <InputField
           control={formApi.control}
-          label="Password"
+          label={t('authForm.password')}
           name="password"
           isRequired
           type={showPassword ? 'text' : 'password'}
@@ -50,9 +57,11 @@ export function AuthForm(props: AuthFormProps) {
         </Button>
 
         <Link to={props.variant === 'register' ? '/login' : '/register'}>
-          {props.variant === 'register'
-            ? 'Already have an account? Login!'
-            : "Don't have an account yet? Register!"}
+          {props.variant === 'register' ? (
+            <>{t('authForm.alreadyHaveAccount')}</>
+          ) : (
+            <>{t('authForm.dontHaveAccount')}</>
+          )}
         </Link>
       </VStack>
     </VStack>
