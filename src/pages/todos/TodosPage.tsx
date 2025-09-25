@@ -4,6 +4,7 @@ import {useNavigate} from '@tanstack/react-router';
 import {TodosContent} from './ui/TodosContent';
 import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
 import {getFormattedDate} from '@shared/utils/formatters/dateFormatter/dateFormatter';
+import {AddIcon} from '@shared/assets/icons';
 
 export function TodosPage() {
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ export function TodosPage() {
         </Box>
 
         <Box pb="1.5rem" pl="1rem">
-          <Button onClick={() => navigate({to: '/new'})}>New task</Button>
+          <Button onClick={() => navigate({to: '/new'})} rightIcon={<AddIcon />}>
+            New task
+          </Button>
         </Box>
       </Flex>
 

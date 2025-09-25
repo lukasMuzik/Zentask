@@ -4,6 +4,7 @@ export interface MenuItemType {
   label: string;
   icon: ReactElement;
   onClick: () => void;
+  variant?: 'default' | 'danger';
 }
 
 export interface OverflowMenuProps {

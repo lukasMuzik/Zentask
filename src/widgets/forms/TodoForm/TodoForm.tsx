@@ -3,6 +3,7 @@ import {InputField} from '@form/InputField';
 import {TextareaField} from '@form/TextareaField';
 import {Button} from '@ui/Button';
 import {TodoFormProps} from './model';
+import {CheckIcon} from '@shared/assets/icons';
 
 export function TodoForm(props: TodoFormProps) {
   return (
@@ -21,7 +22,9 @@ export function TodoForm(props: TodoFormProps) {
         <Button type="button" variant="secondary" onClick={props.handleNavigateToTodos}>
           {props.secondaryButtonText}
         </Button>
-        <Button type="submit">{props.submitButtonText}</Button>
+        <Button type="submit" rightIcon={<CheckIcon />}>
+          {props.submitButtonText}
+        </Button>
       </Flex>
     </Box>
   );
