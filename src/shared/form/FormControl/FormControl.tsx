@@ -32,7 +32,7 @@ export function FormControl({
 
       {helperText && <HelperText>{helperText}</HelperText>}
 
-      {errorText && <HelperText>{errorText}</HelperText>}
+      {errorText && <HelperText color="text-danger">{errorText}</HelperText>}
     </VStack>
   );
 }
