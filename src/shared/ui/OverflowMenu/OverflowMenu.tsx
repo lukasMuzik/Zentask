@@ -15,7 +15,11 @@ export function OverflowMenu(props: OverflowMenuProps) {
               item.onClick();
             }}
           >
-            <Flex gap="12px" alignItems="center">
+            <Flex
+              alignItems="center"
+              gap="12px"
+              color={item.variant === 'danger' ? 'text-danger' : 'text-primary'}
+            >
               {item.icon}
 
               <Text as="span">{item.label}</Text>

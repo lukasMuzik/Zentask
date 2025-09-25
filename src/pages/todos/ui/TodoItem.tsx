@@ -1,6 +1,6 @@
 import {Text, Grid, Box} from '@chakra-ui/react';
 import {OverflowMenu} from '@ui/OverflowMenu';
-import {DeleteIcon, MoreIcon} from '@shared/assets/icons';
+import {DeleteIcon, MoreIcon, EditIcon} from '@shared/assets/icons';
 import {Button} from '@ui/Button';
 import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMutation';
 import {useNavigate} from '@tanstack/react-router';
@@ -45,13 +45,14 @@ export function TodoItem({todo}: TodoItemProps) {
         menuItems={[
           {
             label: 'Edit',
-            icon: <MoreIcon />,
+            icon: <EditIcon />,
             onClick: () => handleEdit(todo.id),
           },
           {
             label: 'Delete',
             icon: <DeleteIcon />,
             onClick: () => handleDelete(todo.id),
+            variant: 'danger',
           },
         ]}
       />

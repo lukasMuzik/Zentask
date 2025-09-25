@@ -1,7 +1,7 @@
-import {createFileRoute, Outlet, useNavigate} from '@tanstack/react-router';
+import {createFileRoute, Outlet, useNavigate, Link} from '@tanstack/react-router';
 import {Box, Flex, Text, Avatar} from '@chakra-ui/react';
 import {Logo} from '@ui/Logo';
-import {MoreIcon} from '@shared/assets/icons';
+import {BackwardsIcon} from '@shared/assets/icons';
 import {OverflowMenu} from '@ui/OverflowMenu';
 import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
 import {useLogoutMutation} from '@features/auth/api/useLogoutMutation';
@@ -38,7 +38,7 @@ function AuthenticatedLayout() {
         px={{base: '0.5rem', sm: '0rem'}}
       >
         {/* TODO Logo section */}
-        <Flex alignItems="center" gap="0.75rem">
+        <Flex alignItems="center" gap="0.75rem" as={Link} to="/" cursor="pointer">
           <Logo variant="simple" width={37} height={32} />
 
           <Text fontSize="1.75rem" fontWeight="700" color="text-primary">
@@ -49,15 +49,22 @@ function AuthenticatedLayout() {
         <OverflowMenu
           trigger={
             <Flex alignItems="center" gap="0.5rem">
-              <Avatar w={{base: '2.5rem', sm: '1.5rem'}} h={{base: '2.5rem', sm: '1.5rem'}} />
+              <Avatar
+                w={{base: '2.5rem', sm: '1.5rem'}}
+                h={{base: '2.5rem', sm: '1.5rem'}}
+                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${
+                  user?.username || 'default'
+                }`}
+              />
               <Text display={{base: 'none', sm: 'block'}}>{user?.username}</Text>
             </Flex>
           }
           menuItems={[
             {
               label: 'Logout',
-              icon: <MoreIcon />,
+              icon: <BackwardsIcon />,
               onClick: handleLogout,
+              variant: 'danger',
             },
           ]}
         />
