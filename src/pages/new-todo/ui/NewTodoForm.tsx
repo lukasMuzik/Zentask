@@ -19,7 +19,6 @@ export function NewTodoForm() {
     <TodoForm
       formApi={formApi}
       onSubmit={onSubmit}
-      handleNavigateToTodos={goHome}
       secondaryButtonText="Discard"
       submitButtonText="Create task"
     />

@@ -19,7 +19,7 @@ export function TodoForm(props: TodoFormProps) {
       </VStack>
 
       <Flex justify="space-between">
-        <Button type="button" variant="secondary" onClick={props.handleNavigateToTodos}>
+        <Button type="button" variant="secondary" onClick={() => window.history.back()}>
           {props.secondaryButtonText}
         </Button>
         <Button type="submit" rightIcon={<CheckIcon />}>

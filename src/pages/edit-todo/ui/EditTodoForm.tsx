@@ -25,7 +25,6 @@ export function EditTodoForm(props: EditTodoFormProps) {
     <TodoForm
       formApi={formApi}
       onSubmit={onSubmit}
-      handleNavigateToTodos={goHome}
       secondaryButtonText="Discard changes"
       submitButtonText="Save changes"
     />

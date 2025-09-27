@@ -13,7 +13,6 @@ export const todoFormInputsSchema = yup.object({
 export type TodoFormInputs = yup.InferType<typeof todoFormInputsSchema>;
 
 export interface TodoFormProps {
-  handleNavigateToTodos: () => void;
   formApi: UseFormReturn<TodoFormInputs>;
   onSubmit: (data: TodoFormInputs) => void;
   submitButtonText: string;

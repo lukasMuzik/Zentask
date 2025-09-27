@@ -6,12 +6,10 @@ import {TodoFormHeader} from '@widgets/headers/TodoFormHeader';
 import {Error} from '@ui/Error';
 import {Spinner} from '@ui/Spinner';
 import {match, P} from 'ts-pattern';
-import {useNavigation} from '@shared/hooks/useNavigation';
 
 export function EditTodoContent() {
   const {todoId} = useParams({from: '/_authenticated/edit/$todoId'});
   const {data, isLoading, isError} = useGetTodoQuery(todoId);
-  const {goHome} = useNavigation();
 
   return match({isLoading, isError, data})
     .with({isLoading: true}, () => <Spinner />)
@@ -19,7 +17,7 @@ export function EditTodoContent() {
     .with({data: P.nullish}, () => <Error message="Task nenalezen" />)
     .with({data: P.not(P.nullish)}, (matched) => (
       <VStack w="full" align="stretch" spacing="2.5rem">
-        <TodoFormHeader title={matched.data.title} handleBack={goHome} />
+        <TodoFormHeader title={matched.data.title} handleBack={() => window.history.back()} />
 
         <EditTodoForm
           todoId={todoId}
