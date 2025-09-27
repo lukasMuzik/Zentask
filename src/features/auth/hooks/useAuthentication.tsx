@@ -1,16 +1,16 @@
-import {useNavigate} from '@tanstack/react-router';
 import {AuthFormInputs} from '../model';
 import {useLoginMutation} from '../api/useLoginMutation';
 import {useRegisterMutation} from '../api/useRegisterMutation';
-import useToast from '../../../shared/hooks/useToast';
+import useToast from '@shared/hooks/useToast';
 import axios from 'axios';
 import {Error} from '@shared/api/types';
 import {ERROR_CODES} from '@shared/api/errorCodes';
 import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
 import {match} from 'ts-pattern';
+import {useNavigation} from '@shared/hooks/useNavigation';
 
 export const useAuthentication = () => {
-  const navigate = useNavigate();
+  const {goHome} = useNavigation();
   const toast = useToast();
   const {login} = useAuth();
 
@@ -20,7 +20,7 @@ export const useAuthentication = () => {
   const handleAuthSuccess = async (accessToken: string) => {
     localStorage.setItem('accessToken', accessToken);
     login(accessToken);
-    navigate({to: '/'});
+    goHome();
   };
 
   const handleAuthError = (error: Error) => {

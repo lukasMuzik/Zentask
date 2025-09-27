@@ -1,4 +1,4 @@
-import {useParams, useNavigate} from '@tanstack/react-router';
+import {useParams} from '@tanstack/react-router';
 import {useGetTodoQuery} from '@entities/Todo/api/useGetTodoQuery';
 import {useToggleTodoMutation} from '@features/todos/toggle/api/useToggleTodoMutation';
 import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMutation';
@@ -11,15 +11,16 @@ import {DetailSection} from './ui/DetailSection';
 import {match, P} from 'ts-pattern';
 import {Spinner} from '@ui/Spinner';
 import {Error} from '@ui/Error';
+import {useNavigation} from '@shared/hooks/useNavigation';
 
 export const TodoDetailPage = () => {
   const {todoId} = useParams({from: '/_authenticated/detail/$todoId'});
   const {data: todo, isLoading} = useGetTodoQuery(todoId);
+  const {goHome, goToEditTodo} = useNavigation();
   const toggleTodoMutation = useToggleTodoMutation();
   const deleteTodoMutation = useDeleteTodoMutation({
-    onSuccess: () => navigate({to: '/'}),
+    onSuccess: goHome,
   });
-  const navigate = useNavigate();
 
   const handleToggleComplete = () => {
     if (!todo) {
@@ -30,7 +31,7 @@ export const TodoDetailPage = () => {
   };
 
   const handleEdit = () => {
-    navigate({to: `/edit/$todoId`, params: {todoId}});
+    goToEditTodo(todoId);
   };
 
   const handleDelete = () => {
@@ -41,17 +42,13 @@ export const TodoDetailPage = () => {
     deleteTodoMutation.mutate(todo.id);
   };
 
-  const handleBack = () => {
-    navigate({to: '/'});
-  };
-
   return match({isLoading, todo})
     .with({isLoading: true}, () => <Spinner />)
     .with({todo: P.nullish}, () => <Error message="Task is not found." />)
     .with({todo: P.not(P.nullish)}, ({todo}) => (
       <Box>
         <Flex as="header" align="center" gap="1.5rem" mb="2rem">
-          <Button onClick={handleBack} iconOnly={<BackwardsIcon />} variant="secondary" />
+          <Button onClick={goHome} iconOnly={<BackwardsIcon />} variant="secondary" />
           <Text fontSize="heading.2" fontWeight="heading.1">
             {todo.title}
           </Text>

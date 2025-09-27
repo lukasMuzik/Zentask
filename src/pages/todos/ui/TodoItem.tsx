@@ -3,21 +3,16 @@ import {OverflowMenu} from '@ui/OverflowMenu';
 import {DeleteIcon, MoreIcon, EditIcon} from '@shared/assets/icons';
 import {Button} from '@ui/Button';
 import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMutation';
-import {useNavigate} from '@tanstack/react-router';
 import {TodoItemProps} from '../model';
 import {ToggleCompleteCheckbox} from '@features/todos/toggle/ui/ToggleCompleteCheckbox';
+import {useNavigation} from '@shared/hooks/useNavigation';
 
 export function TodoItem({todo}: TodoItemProps) {
   const deleteTodoMutation = useDeleteTodoMutation();
-  const navigate = useNavigate();
+  const {goToEditTodo, goToTodoDetail} = useNavigation();
 
-  const handleEdit = (todoId: string) => {
-    navigate({to: `/edit/$todoId`, params: {todoId}});
-  };
-
-  const handleViewDetail = (todoId: string) => {
-    navigate({to: `/detail/$todoId`, params: {todoId}});
-  };
+  const handleEdit = (todoId: string) => goToEditTodo(todoId);
+  const handleViewDetail = (todoId: string) => goToTodoDetail(todoId);
 
   const handleDelete = (todoId: string) => {
     deleteTodoMutation.mutate(todoId);

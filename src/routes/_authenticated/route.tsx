@@ -1,10 +1,11 @@
-import {createFileRoute, Outlet, useNavigate, Link} from '@tanstack/react-router';
+import {createFileRoute, Outlet, Link} from '@tanstack/react-router';
 import {Box, Flex, Text, Avatar} from '@chakra-ui/react';
 import {Logo} from '@ui/Logo';
 import {BackwardsIcon} from '@shared/assets/icons';
 import {OverflowMenu} from '@ui/OverflowMenu';
 import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
 import {useLogoutMutation} from '@features/auth/api/useLogoutMutation';
+import {useNavigation} from '@shared/hooks/useNavigation';
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async ({context}) => {
@@ -16,13 +17,13 @@ export const Route = createFileRoute('/_authenticated')({
 function AuthenticatedLayout() {
   const {user, logout} = useAuth();
   const logoutMutation = useLogoutMutation();
-  const navigate = useNavigate();
+  const {goToLogin} = useNavigation();
 
   const handleLogout = async () => {
     try {
       await logoutMutation.mutateAsync();
       logout();
-      navigate({to: '/login'});
+      goToLogin();
     } catch (e) {
       console.log(e);
     }

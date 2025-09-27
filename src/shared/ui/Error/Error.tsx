@@ -1,6 +1,6 @@
 import {Center, VStack, Text, HStack} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
-import {useNavigate} from '@tanstack/react-router';
+import {useNavigation} from '@shared/hooks/useNavigation';
 
 interface ErrorHandlerProps {
   message?: string;
@@ -12,7 +12,7 @@ interface ErrorHandlerProps {
 }
 
 export function Error({message = 'Unexpected error', action}: ErrorHandlerProps) {
-  const navigate = useNavigate();
+  const {goHome} = useNavigation();
 
   return (
     <Center>
@@ -21,7 +21,7 @@ export function Error({message = 'Unexpected error', action}: ErrorHandlerProps)
           {message}
         </Text>
         <HStack>
-          <Button onClick={() => navigate({to: '/'})} variant="secondary">
+          <Button onClick={goHome} variant="secondary">
             Back to task list
           </Button>
           {action && (

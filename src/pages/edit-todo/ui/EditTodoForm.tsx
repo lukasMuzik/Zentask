@@ -1,21 +1,20 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {useNavigate} from '@tanstack/react-router';
 import {useEditTodoMutation} from '../api/useEditTodoMutation';
 import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '@widgets/forms/TodoForm';
 import {EditTodoFormProps} from '../model';
+import {useNavigation} from '@shared/hooks/useNavigation';
 
 export function EditTodoForm(props: EditTodoFormProps) {
-  const navigate = useNavigate();
+  const {goHome} = useNavigation();
+
   const formApi = useForm<TodoFormInputs>({
     resolver: yupResolver(todoFormInputsSchema),
     defaultValues: props,
   });
 
-  const handleNavigateToTodos = () => navigate({to: '/'});
-
   const editTodoMutation = useEditTodoMutation({
-    onSuccess: handleNavigateToTodos,
+    onSuccess: goHome,
   });
 
   const onSubmit: SubmitHandler<TodoFormInputs> = (data) => {
@@ -26,7 +25,7 @@ export function EditTodoForm(props: EditTodoFormProps) {
     <TodoForm
       formApi={formApi}
       onSubmit={onSubmit}
-      handleNavigateToTodos={handleNavigateToTodos}
+      handleNavigateToTodos={goHome}
       secondaryButtonText="Discard changes"
       submitButtonText="Save changes"
     />
