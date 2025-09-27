@@ -5,7 +5,8 @@ import {useAuthQuery} from './api/useAuthQuery';
 import {useQueryClient} from '@tanstack/react-query';
 import {redirect} from '@tanstack/react-router';
 import {checkAndRefreshAuth} from './checkAndRefreshAuth';
-import {QUERY_KEY_MAP} from '@shared/api/queryKeyMap';
+import {QUERY_KEY_MAP} from '@shared/constants/queryKeyMap';
+import {LOCAL_STORAGE_KEY_MAP} from '@shared/constants/localStorageKeyMap';
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
@@ -24,14 +25,14 @@ export function AuthProvider({children}: AuthProviderProps) {
   const {data: user} = useAuthQuery();
 
   const login = (accessToken: string) => {
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem(LOCAL_STORAGE_KEY_MAP.ACCESS_TOKEN, accessToken);
     const userData = decodeToken(accessToken);
 
     queryClient.setQueryData([QUERY_KEY_MAP.AUTH], userData);
   };
 
   const logout = () => {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem(LOCAL_STORAGE_KEY_MAP.ACCESS_TOKEN);
 
     queryClient.cancelQueries({queryKey: [QUERY_KEY_MAP.AUTH]});
     queryClient.setQueryData([QUERY_KEY_MAP.AUTH], null);

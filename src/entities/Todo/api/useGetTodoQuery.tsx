@@ -1,7 +1,7 @@
 import {useQuery} from '@tanstack/react-query';
 import {apiClient} from '@shared/api/client';
 import {Todo} from '../model';
-import {QUERY_KEY_MAP} from '@shared/api/queryKeyMap';
+import {QUERY_KEY_MAP} from '@shared/constants/queryKeyMap';
 
 export const useGetTodoQuery = (todoId: string) =>
   useQuery({

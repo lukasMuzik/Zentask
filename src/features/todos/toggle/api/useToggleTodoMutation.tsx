@@ -3,7 +3,7 @@ import {apiClient} from '@shared/api/client';
 import {Todo} from '@entities/Todo/model';
 import {ToggleCompleteParams} from '../model';
 import useToast from '@shared/hooks/useToast';
-import {QUERY_KEY_MAP} from '@shared/api/queryKeyMap';
+import {QUERY_KEY_MAP} from '@shared/constants/queryKeyMap';
 
 const toggleTodo = async ({todoId, completed}: ToggleCompleteParams): Promise<Todo> => {
   const url = completed ? `/api/todo/${todoId}/incomplete` : `/api/todo/${todoId}/complete`;

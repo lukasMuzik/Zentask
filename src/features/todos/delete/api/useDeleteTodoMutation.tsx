@@ -1,7 +1,7 @@
 import {DefaultError, useMutation, UseMutationOptions, useQueryClient} from '@tanstack/react-query';
 import {apiClient} from '@shared/api/client';
 import useToast from '@shared/hooks/useToast';
-import {QUERY_KEY_MAP} from '@shared/api/queryKeyMap';
+import {QUERY_KEY_MAP} from '@shared/constants/queryKeyMap';
 
 export const useDeleteTodoMutation = (
   options: Pick<UseMutationOptions<unknown, DefaultError, string>, 'onSuccess' | 'onError'> = {}

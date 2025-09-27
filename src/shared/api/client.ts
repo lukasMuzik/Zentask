@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {ERROR_CODES} from './errorCodes';
+import {LOCAL_STORAGE_KEY_MAP} from '@shared/constants/localStorageKeyMap';
 
 const API_BASE_URL = 'http://localhost:3002';
 
@@ -12,7 +13,7 @@ export const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem(LOCAL_STORAGE_KEY_MAP.ACCESS_TOKEN);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -39,7 +40,7 @@ apiClient.interceptors.response.use(
       const success = await tryRefreshToken();
 
       if (success) {
-        const newToken = localStorage.getItem('accessToken');
+        const newToken = localStorage.getItem(LOCAL_STORAGE_KEY_MAP.ACCESS_TOKEN);
         originalRequest.headers.Authorization = `Bearer ${newToken}`;
         return apiClient(originalRequest);
       } else {
@@ -58,11 +59,11 @@ export async function tryRefreshToken() {
     });
 
     const newAccessToken = refreshResponse.data.accessToken;
-    localStorage.setItem('accessToken', newAccessToken);
+    localStorage.setItem(LOCAL_STORAGE_KEY_MAP.ACCESS_TOKEN, newAccessToken);
 
     return true;
   } catch (error) {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem(LOCAL_STORAGE_KEY_MAP.ACCESS_TOKEN);
     return false;
   }
 }

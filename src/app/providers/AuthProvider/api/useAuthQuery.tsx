@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 import {checkAndRefreshAuth} from '../checkAndRefreshAuth';
-import {QUERY_KEY_MAP} from '@shared/api/queryKeyMap';
+import {QUERY_KEY_MAP} from '@shared/constants/queryKeyMap';
 
 export const useAuthQuery = () =>
   useQuery({

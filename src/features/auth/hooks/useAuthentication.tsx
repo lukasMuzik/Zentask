@@ -8,6 +8,7 @@ import {ERROR_CODES} from '@shared/api/errorCodes';
 import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
 import {match} from 'ts-pattern';
 import {useNavigation} from '@shared/hooks/useNavigation';
+import {LOCAL_STORAGE_KEY_MAP} from '@shared/constants/localStorageKeyMap';
 
 export const useAuthentication = () => {
   const {goHome} = useNavigation();
@@ -18,7 +19,7 @@ export const useAuthentication = () => {
   const registerMutation = useRegisterMutation();
 
   const handleAuthSuccess = async (accessToken: string) => {
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem(LOCAL_STORAGE_KEY_MAP.ACCESS_TOKEN, accessToken);
     login(accessToken);
     goHome();
   };
