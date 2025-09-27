@@ -9,14 +9,11 @@ export function NewTodoForm() {
     resolver: yupResolver(todoFormInputsSchema),
   });
   const navigate = useNavigate();
-  const createTodoMutation = useCreateTodoMutation();
-
   const handleNavigateToTodos = () => navigate({to: '/'});
+  const createTodoMutation = useCreateTodoMutation({onSuccess: handleNavigateToTodos});
 
   const onSubmit: SubmitHandler<TodoFormInputs> = (data) => {
     createTodoMutation.mutate(data);
-
-    handleNavigateToTodos();
   };
 
   return (

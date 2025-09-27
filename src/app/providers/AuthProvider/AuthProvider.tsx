@@ -5,6 +5,7 @@ import {useAuthQuery} from './api/useAuthQuery';
 import {useQueryClient} from '@tanstack/react-query';
 import {redirect} from '@tanstack/react-router';
 import {checkAndRefreshAuth} from './checkAndRefreshAuth';
+import {QUERY_KEY_MAP} from '@shared/api/queryKeyMap';
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
 
@@ -26,20 +27,20 @@ export function AuthProvider({children}: AuthProviderProps) {
     localStorage.setItem('accessToken', accessToken);
     const userData = decodeToken(accessToken);
 
-    queryClient.setQueryData(['auth'], userData);
+    queryClient.setQueryData([QUERY_KEY_MAP.AUTH], userData);
   };
 
   const logout = () => {
     localStorage.removeItem('accessToken');
 
-    queryClient.cancelQueries({queryKey: ['auth']});
-    queryClient.setQueryData(['auth'], null);
-    queryClient.removeQueries({queryKey: ['auth'], exact: true});
+    queryClient.cancelQueries({queryKey: [QUERY_KEY_MAP.AUTH]});
+    queryClient.setQueryData([QUERY_KEY_MAP.AUTH], null);
+    queryClient.removeQueries({queryKey: [QUERY_KEY_MAP.AUTH], exact: true});
   };
 
   const authGuard = async () => {
     const user = await queryClient.fetchQuery({
-      queryKey: ['auth'],
+      queryKey: [QUERY_KEY_MAP.AUTH],
       queryFn: checkAndRefreshAuth,
     });
 

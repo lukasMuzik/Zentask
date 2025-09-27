@@ -12,15 +12,15 @@ export function EditTodoForm(props: EditTodoFormProps) {
     defaultValues: props,
   });
 
-  const editTodoMutation = useEditTodoMutation();
+  const handleNavigateToTodos = () => navigate({to: '/'});
+
+  const editTodoMutation = useEditTodoMutation({
+    onSuccess: handleNavigateToTodos,
+  });
 
   const onSubmit: SubmitHandler<TodoFormInputs> = (data) => {
     editTodoMutation.mutate({todoId: props.todoId, data});
-
-    navigate({to: '/'});
   };
-
-  const handleNavigateToTodos = () => navigate({to: '/'});
 
   return (
     <TodoForm

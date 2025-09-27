@@ -2,7 +2,7 @@ import {useParams, useNavigate} from '@tanstack/react-router';
 import {useGetTodoQuery} from '@entities/Todo/api/useGetTodoQuery';
 import {useToggleTodoMutation} from '@features/todos/toggle/api/useToggleTodoMutation';
 import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMutation';
-import {Box, Text, VStack, HStack, Flex, Center} from '@chakra-ui/react';
+import {Box, Text, VStack, HStack, Flex} from '@chakra-ui/react';
 import {Button} from '@ui/Button';
 import {Checkbox} from '@ui/Checkbox';
 import {BackwardsIcon} from '@shared/assets/icons';
@@ -16,13 +16,17 @@ export const TodoDetailPage = () => {
   const {todoId} = useParams({from: '/_authenticated/detail/$todoId'});
   const {data: todo, isLoading} = useGetTodoQuery(todoId);
   const toggleTodoMutation = useToggleTodoMutation();
-  const deleteTodoMutation = useDeleteTodoMutation();
+  const deleteTodoMutation = useDeleteTodoMutation({
+    onSuccess: () => navigate({to: '/'}),
+  });
   const navigate = useNavigate();
 
   const handleToggleComplete = () => {
-    if (todo) {
-      toggleTodoMutation.mutate({todoId: todo.id, completed: todo.completed});
+    if (!todo) {
+      return;
     }
+
+    toggleTodoMutation.mutate({todoId: todo.id, completed: todo.completed});
   };
 
   const handleEdit = () => {
@@ -30,10 +34,11 @@ export const TodoDetailPage = () => {
   };
 
   const handleDelete = () => {
-    if (todo) {
-      deleteTodoMutation.mutate(todo.id);
-      navigate({to: '/'});
+    if (!todo) {
+      return;
     }
+
+    deleteTodoMutation.mutate(todo.id);
   };
 
   const handleBack = () => {
