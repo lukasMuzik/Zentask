@@ -21,4 +21,5 @@ export interface TodoFormProps {
   onSubmit: (data: TodoFormInputs) => void;
   submitButtonText: string;
   secondaryButtonText: string;
+  variant?: 'create' | 'edit';
 }

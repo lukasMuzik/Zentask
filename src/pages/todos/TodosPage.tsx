@@ -7,11 +7,13 @@ import {getFormattedDate} from '@shared/utils/formatters/dateFormatter/dateForma
 import {AddIcon} from '@shared/assets/icons';
 import {useNavigation} from '@shared/hooks/useNavigation';
 import {useTranslation} from 'react-i18next';
+import {useIsMobile} from '@shared/hooks/useIsMobile';
 
 export function TodosPage() {
   const {goToNewTodo} = useNavigation();
   const {user} = useAuth();
   const {t} = useTranslation('common');
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -32,9 +34,13 @@ export function TodosPage() {
           </Box>
 
           <Box pb="1.5rem" pl="1rem">
-            <Button onClick={goToNewTodo} rightIcon={<AddIcon />}>
-              {t('buttons.newTask')}
-            </Button>
+            {isMobile ? (
+              <Button onClick={goToNewTodo} iconOnly={<AddIcon />} />
+            ) : (
+              <Button onClick={goToNewTodo} rightIcon={<AddIcon />}>
+                {t('buttons.newTask')}
+              </Button>
+            )}
           </Box>
         </Flex>
 

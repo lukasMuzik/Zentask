@@ -3,11 +3,12 @@ import {InputField} from '@form/InputField';
 import {TextareaField} from '@form/TextareaField';
 import {Button} from '@ui/Button';
 import {TodoFormProps} from './model';
-import {CheckIcon} from '@shared/assets/icons';
+import {AddIcon, CheckIcon} from '@shared/assets/icons';
 import {useTranslation} from 'react-i18next';
 
 export function TodoForm(props: TodoFormProps) {
   const {t} = useTranslation('todos');
+  const {variant = 'create'} = props;
 
   return (
     <Box as="form" onSubmit={props.formApi.handleSubmit(props.onSubmit)}>
@@ -30,7 +31,7 @@ export function TodoForm(props: TodoFormProps) {
         <Button type="button" variant="secondary" onClick={() => window.history.back()}>
           {props.secondaryButtonText}
         </Button>
-        <Button type="submit" rightIcon={<CheckIcon />}>
+        <Button type="submit" rightIcon={variant === 'create' ? <AddIcon /> : <CheckIcon />}>
           {props.submitButtonText}
         </Button>
       </Flex>

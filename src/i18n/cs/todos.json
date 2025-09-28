@@ -6,6 +6,7 @@
   "status.incomplete": "Nedokončeno",
 
   "messages.amazing": "Jste úžasní!",
+  "messages.noTasksMobile": "Nemáte žádné další úkoly.",
   "messages.noTasks": "Nemáte žádné další úkoly k dokončení.",
   "messages.loadingError": "Chyba při načítání úkolu",
   "messages.taskNotFound": "Úkol nebyl nalezen",
@@ -14,7 +15,9 @@
   "actions.delete": "Smazat",
   "actions.editTask": "Upravit úkol",
   "actions.deleteTask": "Smazat úkol",
+  "actions.create": "Vytvořit",
   "actions.createTask": "Vytvořit úkol",
+  "actions.save": "Uložit",
   "actions.saveChanges": "Uložit změny",
   "actions.discard": "Zrušit",
   "actions.discardChanges": "Zrušit změny",

@@ -6,6 +6,7 @@
   "status.incomplete": "Incomplete",
 
   "messages.amazing": "You are amazing!",
+  "messages.noTasksMobile": "There is no more tasks.",
   "messages.noTasks": "There is no more tasks to do.",
   "messages.loadingError": "Error loading task",
   "messages.taskNotFound": "Task not found",
@@ -15,6 +16,7 @@
   "actions.editTask": "Edit task",
   "actions.deleteTask": "Delete task",
   "actions.createTask": "Create task",
+  "actions.save": "Save",
   "actions.saveChanges": "Save changes",
   "actions.discard": "Discard",
   "actions.discardChanges": "Discard changes",

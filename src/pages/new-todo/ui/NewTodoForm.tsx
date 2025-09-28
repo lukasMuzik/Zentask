@@ -4,6 +4,7 @@ import {useCreateTodoMutation} from '../api/useCreateTodoMutation';
 import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '@widgets/forms/TodoForm';
 import {useNavigation} from '@shared/hooks/useNavigation';
 import {useTranslation} from 'react-i18next';
+import {useIsMobile} from '@shared/hooks/useIsMobile';
 
 export function NewTodoForm() {
   const formApi = useForm<TodoFormInputs>({
@@ -12,6 +13,7 @@ export function NewTodoForm() {
   const {goHome} = useNavigation();
   const createTodoMutation = useCreateTodoMutation({onSuccess: goHome});
   const {t} = useTranslation('todos');
+  const isMobile = useIsMobile();
 
   const onSubmit: SubmitHandler<TodoFormInputs> = (data) => {
     createTodoMutation.mutate(data);
@@ -22,7 +24,7 @@ export function NewTodoForm() {
       formApi={formApi}
       onSubmit={onSubmit}
       secondaryButtonText={t('actions.discard')}
-      submitButtonText={t('actions.createTask')}
+      submitButtonText={isMobile ? t('actions.create') : t('actions.createTask')}
     />
   );
 }
