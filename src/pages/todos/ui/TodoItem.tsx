@@ -6,10 +6,12 @@ import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMut
 import {TodoItemProps} from '../model';
 import {ToggleCompleteCheckbox} from '@features/todos/toggle/ui/ToggleCompleteCheckbox';
 import {useNavigation} from '@shared/hooks/useNavigation';
+import {useTranslation} from 'react-i18next';
 
 export function TodoItem({todo}: TodoItemProps) {
   const deleteTodoMutation = useDeleteTodoMutation();
   const {goToEditTodo, goToTodoDetail} = useNavigation();
+  const {t} = useTranslation('todos');
 
   const handleEdit = (todoId: string) => goToEditTodo(todoId);
   const handleViewDetail = (todoId: string) => goToTodoDetail(todoId);
@@ -39,12 +41,12 @@ export function TodoItem({todo}: TodoItemProps) {
         trigger={<Button iconOnly={<MoreIcon />} variant="textOnly" />}
         menuItems={[
           {
-            label: 'Edit',
+            label: t('actions.edit'),
             icon: <EditIcon />,
             onClick: () => handleEdit(todo.id),
           },
           {
-            label: 'Delete',
+            label: t('actions.delete'),
             icon: <DeleteIcon />,
             onClick: () => handleDelete(todo.id),
             variant: 'danger',

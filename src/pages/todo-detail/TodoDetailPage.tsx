@@ -3,6 +3,7 @@ import {useGetTodoQuery} from '@entities/Todo/api/useGetTodoQuery';
 import {useToggleTodoMutation} from '@features/todos/toggle/api/useToggleTodoMutation';
 import {useDeleteTodoMutation} from '@features/todos/delete/api/useDeleteTodoMutation';
 import {Box, Text, VStack, HStack, Flex} from '@chakra-ui/react';
+import {Helmet} from 'react-helmet-async';
 import {Button} from '@ui/Button';
 import {Checkbox} from '@ui/Checkbox';
 import {BackwardsIcon} from '@shared/assets/icons';
@@ -12,6 +13,7 @@ import {match, P} from 'ts-pattern';
 import {Spinner} from '@ui/Spinner';
 import {Error} from '@ui/Error';
 import {useNavigation} from '@shared/hooks/useNavigation';
+import {useTranslation} from 'react-i18next';
 
 export const TodoDetailPage = () => {
   const {todoId} = useParams({from: '/_authenticated/detail/$todoId'});
@@ -21,6 +23,7 @@ export const TodoDetailPage = () => {
   const deleteTodoMutation = useDeleteTodoMutation({
     onSuccess: goHome,
   });
+  const {t} = useTranslation(['common', 'todos']);
 
   const handleToggleComplete = () => {
     if (!todo) {
@@ -43,34 +46,55 @@ export const TodoDetailPage = () => {
   };
 
   return match({isLoading, todo})
-    .with({isLoading: true}, () => <Spinner />)
-    .with({todo: P.nullish}, () => <Error message="Task is not found." />)
+    .with({isLoading: true}, () => (
+      <>
+        <Helmet>
+          <title>{t('common:pages.taskDetail')}</title>
+        </Helmet>
+        <Spinner />
+      </>
+    ))
+    .with({todo: P.nullish}, () => (
+      <>
+        <Helmet>
+          <title>{t('common:pages.taskDetail')}</title>
+        </Helmet>
+        <Error message={t('todos:errors.taskNotFound')} />
+      </>
+    ))
     .with({todo: P.not(P.nullish)}, ({todo}) => (
-      <Box>
-        <Flex as="header" align="center" gap="1.5rem" mb="2rem">
-          <Button onClick={goHome} iconOnly={<BackwardsIcon />} variant="secondary" />
-          <Text fontSize="heading.2" fontWeight="heading.1">
-            {todo.title}
-          </Text>
-        </Flex>
-
-        <VStack spacing="6" align="stretch">
-          <DetailSection title="Popis">
-            <Text fontSize="md" color="text-secondary" lineHeight="1.6" whiteSpace="pre-wrap">
-              {todo.description}
+      <>
+        <Helmet>
+          <title>{`${todo.title} - ${t('common:pages.taskDetail')}`}</title>
+        </Helmet>
+        <Box>
+          <Flex as="header" align="center" gap="1.5rem" mb="2rem">
+            <Button onClick={goHome} iconOnly={<BackwardsIcon />} variant="secondary" />
+            <Text fontSize="heading.2" fontWeight="heading.1">
+              {todo.title}
             </Text>
-          </DetailSection>
+          </Flex>
 
-          <DetailSection title="Stav">
-            <HStack spacing="3">
-              <Checkbox isChecked={todo.completed} onChange={handleToggleComplete} />
-              <Text color="text-secondary">{todo.completed ? 'Dokončeno' : 'Nedokončeno'}</Text>
-            </HStack>
-          </DetailSection>
+          <VStack spacing="6" align="stretch">
+            <DetailSection title={t('todos:headers.description')}>
+              <Text fontSize="md" color="text-secondary" lineHeight="1.6" whiteSpace="pre-wrap">
+                {todo.description}
+              </Text>
+            </DetailSection>
 
-          <DetailActions onEdit={handleEdit} onDelete={handleDelete} />
-        </VStack>
-      </Box>
+            <DetailSection title={t('todos:headers.status')}>
+              <HStack spacing="3">
+                <Checkbox isChecked={todo.completed} onChange={handleToggleComplete} />
+                <Text color="text-secondary">
+                  {todo.completed ? t('todos:status.completed') : t('todos:status.incomplete')}
+                </Text>
+              </HStack>
+            </DetailSection>
+
+            <DetailActions onEdit={handleEdit} onDelete={handleDelete} />
+          </VStack>
+        </Box>
+      </>
     ))
     .exhaustive();
 };

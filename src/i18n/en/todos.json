@@ -1,0 +1,38 @@
+{
+  "sections.todo": "To-do",
+  "sections.completed": "Completed",
+
+  "status.completed": "Completed",
+  "status.incomplete": "Incomplete",
+
+  "messages.amazing": "You are amazing!",
+  "messages.noTasks": "There is no more tasks to do.",
+  "messages.loadingError": "Error loading task",
+  "messages.taskNotFound": "Task not found",
+
+  "actions.edit": "Edit",
+  "actions.delete": "Delete",
+  "actions.editTask": "Edit task",
+  "actions.deleteTask": "Delete task",
+  "actions.createTask": "Create task",
+  "actions.saveChanges": "Save changes",
+  "actions.discard": "Discard",
+  "actions.discardChanges": "Discard changes",
+
+  "headers.newTask": "New Task",
+  "headers.description": "Description",
+  "headers.status": "Status",
+
+  "forms.taskName": "Task name",
+  "forms.description": "Description (optional)",
+  "forms.validation.title.required": "Title is required",
+  "forms.validation.title.min": "Title must be at least {{count}} characters",
+  "forms.validation.title.max": "Title must be less than {{count}} characters",
+  "forms.validation.description.max": "Description must be less than {{count}} characters",
+
+  "errors.toggleError": "Error while toggling task",
+  "errors.createError": "Error occurred while creating task",
+  "errors.deleteError": "Error occurred while deleting task",
+  "errors.editError": "Error occurred while editing task",
+  "errors.taskNotFound": "Task is not found."
+}

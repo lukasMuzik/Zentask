@@ -1,0 +1,38 @@
+{
+  "sections.todo": "K dokončení",
+  "sections.completed": "Dokončené",
+
+  "status.completed": "Dokončeno",
+  "status.incomplete": "Nedokončeno",
+
+  "messages.amazing": "Jste úžasní!",
+  "messages.noTasks": "Nemáte žádné další úkoly k dokončení.",
+  "messages.loadingError": "Chyba při načítání úkolu",
+  "messages.taskNotFound": "Úkol nebyl nalezen",
+
+  "actions.edit": "Upravit",
+  "actions.delete": "Smazat",
+  "actions.editTask": "Upravit úkol",
+  "actions.deleteTask": "Smazat úkol",
+  "actions.createTask": "Vytvořit úkol",
+  "actions.saveChanges": "Uložit změny",
+  "actions.discard": "Zrušit",
+  "actions.discardChanges": "Zrušit změny",
+
+  "headers.newTask": "Nový úkol",
+  "headers.description": "Popis",
+  "headers.status": "Stav",
+
+  "forms.taskName": "Název úkolu",
+  "forms.description": "Popis (nepovinný)",
+  "forms.validation.title.required": "Název je povinný",
+  "forms.validation.title.min": "Název musí mít alespoň {{count}} znaky",
+  "forms.validation.title.max": "Název musí mít méně než {{count}} znaků",
+  "forms.validation.description.max": "Popis musí mít méně než {{count}} znaků",
+
+  "errors.toggleError": "Chyba při změně stavu úkolu",
+  "errors.createError": "Při vytvoření úkolu nastala chyba",
+  "errors.deleteError": "Při smazání úkolu nastala chyba",
+  "errors.editError": "Při editaci úkolu nastala chyba",
+  "errors.taskNotFound": "Úkol nebyl nalezen."
+}

@@ -6,9 +6,11 @@ import {match} from 'ts-pattern';
 import {TasksFinished} from './TasksFinished';
 import {Error} from '@ui/Error';
 import {Spinner} from '@ui/Spinner';
+import {useTranslation} from 'react-i18next';
 
 export function TodosContent() {
   const {data, isLoading, isError, refetch} = useGetTodosQuery();
+  const {t} = useTranslation(['common', 'todos']);
 
   const todos = data?.todos || [];
   const [completed, incompleted] = partition((todo) => todo.completed, todos);
@@ -20,7 +22,10 @@ export function TodosContent() {
   })
     .with({isLoading: true}, () => <Spinner />)
     .with({isError: true}, () => (
-      <Error message="Unexpected error" action={{label: 'Try again', onClick: refetch}} />
+      <Error
+        message={t('common:errors.unexpected')}
+        action={{label: t('common:buttons.tryAgain'), onClick: refetch}}
+      />
     ))
     .with({todosLength: 0}, () => <TasksFinished />)
     .otherwise(() => (
@@ -28,10 +33,10 @@ export function TodosContent() {
         {match(incompleted.length)
           .with(0, () => <TasksFinished />)
           .otherwise(() => (
-            <TodoList title="To-do" todoItems={incompleted} />
+            <TodoList title={t('todos:sections.todo')} todoItems={incompleted} />
           ))}
 
-        <TodoList title="Completed" todoItems={completed} />
+        <TodoList title={t('todos:sections.completed')} todoItems={completed} />
       </VStack>
     ));
 }

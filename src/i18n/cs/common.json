@@ -1,6 +1,18 @@
 {
-  "app.title": "Carvago Frontend Assignment",
-  "app.description": "Assignment in React.js for developers who want to join our team.",
-  "welcome.message": "Welcome to Carvago Front-End Assignment",
-  "welcome.link": "see API docs"
+  "app.name": "Zentask",
+  "app.description": "Správa úkolů pro produktivní týmy",
+
+  "pages.todos": "Moje úkoly",
+  "pages.newTask": "Nový úkol",
+  "pages.editTask": "Upravit úkol",
+  "pages.taskDetail": "Detail úkolu",
+  "pages.login": "Přihlášení",
+  "pages.register": "Registrace",
+
+  "greeting.hello": "Ahoj {{username}}",
+  "buttons.newTask": "Nový úkol",
+  "buttons.backToTaskList": "Zpět na seznam úkolů",
+  "buttons.tryAgain": "Zkusit znovu",
+
+  "errors.unexpected": "Neočekávaná chyba"
 }

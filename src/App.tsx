@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       <Helmet
-        titleTemplate={`%s - ${t('app.title')}`}
-        defaultTitle={t('app.title')}
+        titleTemplate={`%s - ${t('app.name')}`}
+        defaultTitle={t('app.name')}
         htmlAttributes={{lang: i18n.language}}
       >
         <meta name="description" content={t('app.description')} />

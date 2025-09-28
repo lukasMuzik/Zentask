@@ -82,10 +82,10 @@ describe('dateFormatter', () => {
         expect(result).toBe('pondělí, 18. srpna 2025');
       });
 
-        it('should format with date and time', () => {
-          const result = getFormattedDate({date: birthdayDate, dateFormat: 'd. MMMM yyyy HH:mm'});
-          expect(result).toBe('18. srpna 2025 10:41');
-        });
+      it('should format with date and time', () => {
+        const result = getFormattedDate({date: birthdayDate, dateFormat: 'd. MMMM yyyy HH:mm'});
+        expect(result).toBe('18. srpna 2025 10:41');
+      });
 
       it('should format with ISO date', () => {
         const result = getFormattedDate({date: birthdayDate, dateFormat: 'yyyy-MM-dd'});

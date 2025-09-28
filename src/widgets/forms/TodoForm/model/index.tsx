@@ -1,13 +1,17 @@
 import * as yup from 'yup';
 import {UseFormReturn} from 'react-hook-form';
+import i18n from '../../../../i18n/i18n';
 
 export const todoFormInputsSchema = yup.object({
   title: yup
     .string()
-    .required('Title is required')
-    .min(3, 'Title must be at least 3 characters')
-    .max(20, 'Title must be less than 20 characters'),
-  description: yup.string().default('').max(100, 'Description must be less than 100 characters'),
+    .required(i18n.t('todos:forms.validation.title.required'))
+    .min(3, i18n.t('todos:forms.validation.title.min', {count: 3}))
+    .max(20, i18n.t('todos:forms.validation.title.max', {count: 20})),
+  description: yup
+    .string()
+    .default('')
+    .max(100, i18n.t('todos:forms.validation.description.max', {count: 100})),
 });
 
 export type TodoFormInputs = yup.InferType<typeof todoFormInputsSchema>;

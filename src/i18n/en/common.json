@@ -1,6 +1,18 @@
 {
-  "app.title": "Carvago Frontend Assignment",
-  "app.description": "Assignment in React.js for developers who want to join our team.",
-  "welcome.message": "Welcome to Carvago Front-End Assignment",
-  "welcome.link": "see API docs"
+  "app.name": "Zentask",
+  "app.description": "Task management for productive teams",
+
+  "pages.todos": "My tasks",
+  "pages.newTask": "New task",
+  "pages.editTask": "Edit task",
+  "pages.taskDetail": "Task detail",
+  "pages.login": "Login",
+  "pages.register": "Register",
+
+  "greeting.hello": "Hello {{username}}",
+  "buttons.newTask": "New task",
+  "buttons.backToTaskList": "Back to task list",
+  "buttons.tryAgain": "Try again",
+
+  "errors.unexpected": "Unexpected error"
 }

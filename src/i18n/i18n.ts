@@ -4,9 +4,11 @@ import {initReactI18next} from 'react-i18next';
 
 import enCommon from './en/common.json';
 import enAuth from './en/auth.json';
+import enTodos from './en/todos.json';
 
 import csCommon from './cs/common.json';
 import csAuth from './cs/auth.json';
+import csTodos from './cs/todos.json';
 
 i18n
   .use(LanguageDetector)
@@ -18,10 +20,12 @@ i18n
       en: {
         common: enCommon,
         auth: enAuth,
+        todos: enTodos,
       },
       cs: {
         common: csCommon,
         auth: csAuth,
+        todos: csTodos,
       },
     },
     debug: false,

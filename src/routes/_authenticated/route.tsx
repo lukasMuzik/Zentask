@@ -6,6 +6,7 @@ import {OverflowMenu} from '@ui/OverflowMenu';
 import {useAuth} from '@app/providers/AuthProvider/AuthProvider';
 import {useLogoutMutation} from '@features/auth/api/useLogoutMutation';
 import {useNavigation} from '@shared/hooks/useNavigation';
+import {useTranslation} from 'react-i18next';
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async ({context}) => {
@@ -18,6 +19,7 @@ function AuthenticatedLayout() {
   const {user, logout} = useAuth();
   const logoutMutation = useLogoutMutation();
   const {goToLogin} = useNavigation();
+  const {t} = useTranslation('auth');
 
   const handleLogout = async () => {
     try {
@@ -43,7 +45,7 @@ function AuthenticatedLayout() {
           <Logo variant="simple" width={37} height={32} />
 
           <Text fontSize="1.75rem" fontWeight="700" color="text-primary">
-            Zentask
+            {t('common:app.name')}
           </Text>
         </Flex>
 
@@ -62,7 +64,7 @@ function AuthenticatedLayout() {
           }
           menuItems={[
             {
-              label: 'Logout',
+              label: t('authForm.buttons.logout'),
               icon: <BackwardsIcon />,
               onClick: handleLogout,
               variant: 'danger',

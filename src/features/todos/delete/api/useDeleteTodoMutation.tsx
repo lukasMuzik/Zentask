@@ -2,12 +2,14 @@ import {DefaultError, useMutation, UseMutationOptions, useQueryClient} from '@ta
 import {apiClient} from '@shared/api/client';
 import useToast from '@shared/hooks/useToast';
 import {QUERY_KEY_MAP} from '@shared/constants/queryKeyMap';
+import {useTranslation} from 'react-i18next';
 
 export const useDeleteTodoMutation = (
   options: Pick<UseMutationOptions<unknown, DefaultError, string>, 'onSuccess' | 'onError'> = {}
 ) => {
   const queryClient = useQueryClient();
   const toast = useToast();
+  const {t} = useTranslation('todos');
   const {onSuccess, onError} = options;
 
   return useMutation({
@@ -19,7 +21,7 @@ export const useDeleteTodoMutation = (
       ]);
     },
     onError: (error, variables, context) => {
-      toast.error('Při smazání tasku nastala chyba');
+      toast.error(t('errors.deleteError'));
       onError?.(error, variables, context);
     },
   });

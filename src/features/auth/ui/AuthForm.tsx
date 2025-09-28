@@ -4,7 +4,6 @@ import {SubmitHandler, useForm} from 'react-hook-form';
 import {InputField} from '@form/InputField';
 import {AuthFormInputs, authSchema} from '../model';
 import {useState} from 'react';
-// todo will add @aliases
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Link} from '@tanstack/react-router';
 import {useAuthentication} from '../hooks/useAuthentication';
@@ -53,7 +52,9 @@ export function AuthForm(props: AuthFormProps) {
 
       <VStack gap="0.25rem" align="stretch">
         <Button type="submit" w="full" rightIcon={<ForwardIcon />}>
-          {props.variant === 'register' ? 'Register' : 'Log in'}
+          {props.variant === 'register'
+            ? t('authForm.buttons.register')
+            : t('authForm.buttons.login')}
         </Button>
 
         <Link to={props.variant === 'register' ? '/login' : '/register'}>

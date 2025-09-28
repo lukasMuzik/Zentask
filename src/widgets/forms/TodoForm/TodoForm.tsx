@@ -4,16 +4,24 @@ import {TextareaField} from '@form/TextareaField';
 import {Button} from '@ui/Button';
 import {TodoFormProps} from './model';
 import {CheckIcon} from '@shared/assets/icons';
+import {useTranslation} from 'react-i18next';
 
 export function TodoForm(props: TodoFormProps) {
+  const {t} = useTranslation('todos');
+
   return (
     <Box as="form" onSubmit={props.formApi.handleSubmit(props.onSubmit)}>
       <VStack spacing="1rem" mb="2.5rem">
-        <InputField control={props.formApi.control} isRequired label="Task name" name="title" />
+        <InputField
+          control={props.formApi.control}
+          isRequired
+          label={t('forms.taskName')}
+          name="title"
+        />
 
         <TextareaField
           control={props.formApi.control}
-          label="Description (optional)"
+          label={t('forms.description')}
           name="description"
         />
       </VStack>

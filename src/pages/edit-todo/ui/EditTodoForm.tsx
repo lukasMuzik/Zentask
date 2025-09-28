@@ -4,9 +4,11 @@ import {useEditTodoMutation} from '../api/useEditTodoMutation';
 import {TodoForm, TodoFormInputs, todoFormInputsSchema} from '@widgets/forms/TodoForm';
 import {EditTodoFormProps} from '../model';
 import {useNavigation} from '@shared/hooks/useNavigation';
+import {useTranslation} from 'react-i18next';
 
 export function EditTodoForm(props: EditTodoFormProps) {
   const {goHome} = useNavigation();
+  const {t} = useTranslation('todos');
 
   const formApi = useForm<TodoFormInputs>({
     resolver: yupResolver(todoFormInputsSchema),
@@ -25,8 +27,8 @@ export function EditTodoForm(props: EditTodoFormProps) {
     <TodoForm
       formApi={formApi}
       onSubmit={onSubmit}
-      secondaryButtonText="Discard changes"
-      submitButtonText="Save changes"
+      secondaryButtonText={t('actions.discardChanges')}
+      submitButtonText={t('actions.saveChanges')}
     />
   );
 }
