@@ -1,0 +1,40 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  check-test-build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout kód
+        uses: actions/checkout@v4
+
+      - name: Nastavení Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Instalace závislostí
+        run: npm ci
+
+      - name: Generování TanStack Route Tree
+        run: npx @tanstack/router-cli generate
+
+      - name: Spuštění kontroly kódu (ESLint, Prettier, TypeCheck)
+        run: npm run check
+
+      - name: Spuštění build procesu
+        run: npm run build
+
+      - name: Spuštění testů
+        run: npm test -- --watchAll=false
