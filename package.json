@@ -105,7 +105,8 @@
     ]
   },
   "simple-git-hooks": {
-    "pre-commit": "npm run format:staged"
+    "pre-commit": "npm run format:staged",
+    "pre-push": "npm run typecheck"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
