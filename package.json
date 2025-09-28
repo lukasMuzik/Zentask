@@ -15,7 +15,8 @@
     "eject": "react-scripts eject",
     "prettify": "prettier --write --config ./.prettierrc --ignore-path ./.prettierignore .",
     "eslint": "eslint --cache --fix -c ./.eslintrc.json .",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "check": "npm run eslint && npm run prettify && npm run typecheck"
   },
   "dependencies": {
     "@chakra-ui/react": "2.5.5",
