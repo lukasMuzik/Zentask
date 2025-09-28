@@ -1,11 +1,12 @@
 import {createContext, useContext} from 'react';
 import {decodeToken} from './utils';
-import {AuthProviderProps, AuthState, User} from './types';
+import {AuthProviderProps, AuthState} from './types';
 import {useQuery, useQueryClient} from '@tanstack/react-query';
 import {redirect} from '@tanstack/react-router';
 import {checkAndRefreshAuth} from './checkAndRefreshAuth';
 import {QUERY_KEY_MAP} from '@shared/constants/queryKeyMap';
 import {LOCAL_STORAGE_KEY_MAP} from '@shared/constants/localStorageKeyMap';
+import {User} from '@entities/User';
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
 

@@ -1,9 +1,5 @@
 import {ReactNode} from 'react';
-
-export interface User {
-  userId: string;
-  username: string;
-}
+import {User} from '@entities/User';
 
 export interface AuthState {
   user: User | null;

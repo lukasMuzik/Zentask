@@ -1,5 +1,5 @@
 import {jwtDecode} from 'jwt-decode';
-import {User} from './types';
+import {User} from '@entities/User';
 
 export const decodeToken = (token: string): User | null => {
   try {
