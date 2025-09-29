@@ -1,14 +1,15 @@
 import {extendTheme} from '@chakra-ui/react';
+import {ButtonProps} from '@ui/Button/';
 
 const fontSizes = {
   heading: {
-    1: '28px',
-    2: '24px',
-    3: '18px',
+    1: '1.75rem',
+    2: '1.5rem',
+    3: '1.125rem',
   },
   text: {
-    base: '16px',
-    small: '14px',
+    base: '1rem',
+    small: '0.875rem',
   },
 };
 
@@ -26,13 +27,13 @@ const fontWeights = {
 
 const lineHeights = {
   heading: {
-    1: '32px',
-    2: '28px',
-    3: '24px',
+    1: '2rem',
+    2: '1.75rem',
+    3: '1.5rem',
   },
   text: {
-    base: '24px',
-    small: '20px',
+    base: '1.5rem',
+    small: '1.25rem',
   },
 };
 
@@ -62,9 +63,9 @@ const theme = extendTheme({
       baseStyle: {
         bg: 'unset',
         letterSpacing: '0%',
-        fontSize: '14px',
+        fontSize: '0.875rem',
         fontWeight: 500,
-        lineHeight: '20px',
+        lineHeight: '1.25rem',
         _hover: {
           bg: 'unset',
         },
@@ -72,37 +73,37 @@ const theme = extendTheme({
 
       sizes: {
         default: {
-          h: '40px',
-          px: '20px',
-          py: '6px',
+          h: '2.5rem',
+          px: '1.25rem',
+          py: '0.375rem',
         },
         icon: {
-          h: '40px',
-          px: '12px',
-          py: '6px',
+          h: '2.5rem',
+          px: '0.75rem',
+          py: '0.375rem',
         },
       },
 
       variants: {
-        primary: (props: any) => ({
+        primary: (props: ButtonProps) => ({
           backgroundColor: 'fill-brand',
           color: 'text-white',
           _hover: {
             backgroundColor: 'fill-brand-hover',
           },
-          borderRadius: props.size === 'icon' ? '100%' : '100px',
+          borderRadius: props.size === 'icon' ? '100%' : '6.25rem',
         }),
-        secondary: (props: any) => ({
+        secondary: (props: ButtonProps) => ({
           color: 'text-primary',
           backgroundColor: 'fill-gray',
-          borderRadius: props.size === 'icon' ? '100%' : '100px',
+          borderRadius: props.size === 'icon' ? '100%' : '6.25rem',
         }),
-        textOnly: (props: any) => ({
+        textOnly: (props: ButtonProps) => ({
           color: 'text-primary',
           _hover: {
             backgroundColor: 'fill-gray',
           },
-          borderRadius: props.size === 'icon' ? '100%' : '100px',
+          borderRadius: props.size === 'icon' ? '100%' : '6.25rem',
         }),
       },
 
@@ -118,10 +119,10 @@ const theme = extendTheme({
           fontWeight: 'text.base',
           color: 'text-primary',
           backgroundColor: 'fill-white',
-          borderRadius: '4px',
-          borderWidth: '1px',
-          px: '16px',
-          py: '12px',
+          borderRadius: '0.25rem',
+          borderWidth: '0.0625rem',
+          px: '1rem',
+          py: '0.75rem',
           _placeholder: {
             color: 'text-tertiary',
           },
@@ -133,7 +134,7 @@ const theme = extendTheme({
             borderColor: 'border-gray',
             _focus: {
               borderColor: 'border-brand',
-              boxShadow: '0 0 0 4px rgba(15, 98, 254, 0.2)',
+              boxShadow: '0 0 0 0.25rem rgba(15, 98, 254, 0.2)',
             },
             _invalid: {
               borderColor: 'border-danger',
@@ -152,10 +153,10 @@ const theme = extendTheme({
         fontWeight: 'text.base',
         color: 'text-primary',
         backgroundColor: 'fill-white',
-        borderRadius: '4px',
-        borderWidth: '1px',
-        lineHeight: '24px',
-        p: '16px',
+        borderRadius: '0.25rem',
+        borderWidth: '0.0625rem',
+        lineHeight: '1.5rem',
+        p: '1rem',
         _placeholder: {
           color: 'text-tertiary',
         },
@@ -165,7 +166,7 @@ const theme = extendTheme({
           borderColor: 'border-gray',
           _focus: {
             borderColor: 'border-brand',
-            boxShadow: '0 0 0 4px rgba(15, 98, 254, 0.2)',
+            boxShadow: '0 0 0 0.25rem rgba(15, 98, 254, 0.2)', // 4px
           },
           _invalid: {
             borderColor: 'border-danger',
@@ -180,15 +181,15 @@ const theme = extendTheme({
     Checkbox: {
       baseStyle: {
         control: {
-          height: '32px',
-          width: '32px',
+          height: '2rem',
+          width: '2rem',
           backgroundColor: 'fill-white',
           borderColor: 'border-gray',
           borderRadius: '100%',
 
           _hover: {
             borderColor: 'fill-brand',
-            boxShadow: '0 0 0 4px rgba(15, 98, 254, 0.2)',
+            boxShadow: '0 0 0 0.25rem rgba(15, 98, 254, 0.2)',
           },
 
           _checked: {
@@ -205,17 +206,17 @@ const theme = extendTheme({
     Menu: {
       baseStyle: {
         list: {
-          w: '216px',
-          borderRadius: '16px',
-          border: '1px solid',
+          w: '13.5rem',
+          borderRadius: '1rem',
+          border: '0.0625rem solid',
           borderColor: 'border-gray',
           backgroundColor: 'fill-white',
-          p: '8px',
-          boxShadow: '0px 8px 40px 0px rgba(0, 0, 0, 0.12)',
+          p: '0.5rem',
+          boxShadow: '0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.12)',
         },
         item: {
-          borderRadius: '4px',
-          p: '8px',
+          borderRadius: '0.25rem',
+          p: '0.5rem',
           fontSize: 'text.small',
           fontWeight: 'text.base',
           backgroundColor: 'fill-white',

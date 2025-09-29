@@ -5,7 +5,7 @@ import {HelmetProvider} from 'react-helmet-async';
 import GlobalStyles from './GlobalStyles';
 import WebVitals from './WebVitals';
 import './i18n/i18n';
-import theme from './theme';
+import theme from '@app/configs/theme';
 import {routeTree} from './routeTree.gen';
 import {createRouter, RouterProvider} from '@tanstack/react-router';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
