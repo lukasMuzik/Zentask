@@ -1,3 +1,3 @@
-import type {User as UserType} from '../../../backend/database/users';
+export type UserType = {username: string; password: string; createdAt: string; id: string};
 
 export type User = Omit<UserType, 'createdAt' | 'password'>;

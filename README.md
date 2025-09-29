@@ -5,7 +5,17 @@
 - For unit testing, [Jest](https://jestjs.io/) is already installed
 - You will use our prettier, eslint, and typescript config for static testing <br/> `npm run eslint && npm run prettify && npm run typecheck`
 
-For a quick start follow these commands
+## Quick Start
+
+To quickly run the application using Docker:
+
+```sh
+make up
+```
+
+This command will build and start all containers in the background. The frontend will be available at [localhost:3000](http://localhost:3000/) and the backend API at [localhost:3002](http://localhost:3002).
+
+Alternatively, for traditional setup:
 
 ```sh
 npm install
@@ -13,7 +23,7 @@ npm start
 ```
 
 Then open [localhost:3000](http://localhost:3000/) to see your app.
-Or open [localhost:3001/api/docs](http://localhost:3001/api/docs) to see APIs you will be working with<br>
+Or open [localhost:3002/api/docs](http://localhost:3001/api/docs) to see APIs you will be working with<br>
 
 ---
 
@@ -45,7 +55,7 @@ You will create a simple to-do app, with a user register and login. You will wor
 
 ## Important links
 
-- [Api docs](http://localhost:3001/api/docs) _(will work only when the project is locally started)_
+- [Api docs](http://localhost:3002/api/docs) _(will work only when the project is locally started)_
 - [Figma specification](https://www.figma.com/file/JoD25P1n4ALPTdt1wesM1S/Zentask---Frontend-Assignment?type=design&t=qZXHzbWa37NSYGcn-6)
 - [Chakra UI](https://chakra-ui.com/)
 - [Jest](https://jestjs.io/)

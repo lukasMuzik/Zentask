@@ -2,7 +2,7 @@ import axios from 'axios';
 import {ERROR_CODES} from './errorCodes';
 import {LOCAL_STORAGE_KEY_MAP} from '@shared/constants/localStorageKeyMap';
 
-const API_BASE_URL = 'http://localhost:3002';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3002';
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
