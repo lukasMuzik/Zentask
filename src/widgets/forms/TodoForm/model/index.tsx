@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import {UseFormReturn} from 'react-hook-form';
-import i18n from '../../../../i18n/i18n';
+import i18n from '@app/i18n/i18n';
 
 export const todoFormInputsSchema = yup.object({
   title: yup
