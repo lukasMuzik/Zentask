@@ -23,4 +23,22 @@ module.exports = {
       ],
     },
   },
+  jest: {
+    configure: {
+      moduleNameMapper: {
+        '^@ui/(.*)$': '<rootDir>/src/shared/ui/$1',
+        '^@form/(.*)$': '<rootDir>/src/shared/form/$1',
+        '^@app/(.*)$': '<rootDir>/src/app/$1',
+        '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+        '^@widgets/(.*)$': '<rootDir>/src/widgets/$1',
+        '^@features/(.*)$': '<rootDir>/src/features/$1',
+        '^@entities/(.*)$': '<rootDir>/src/entities/$1',
+        '^@shared/(.*)$': '<rootDir>/src/shared/$1',
+        '^@routes/(.*)$': '<rootDir>/src/routes/$1',
+        '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+        '\\.(svg)$': '<rootDir>/@types/svg.d.ts',
+      },
+    },
+  },
+  transformIgnorePatterns: ['node_modules/(?!(axios)/)'],
 };
