@@ -6,6 +6,7 @@ export type TextInputFieldProps<FormData extends FieldValues> = UseControllerPro
   Omit<TextInputProps, 'variant' | 'onChange' | 'onBlur' | 'value' | 'isInvalid'> & {
     label?: string;
     helperText?: string;
+    dataTestId?: string;
   };
 
 export function InputField<FormData extends FieldValues>(props: TextInputFieldProps<FormData>) {
@@ -26,6 +27,7 @@ export function InputField<FormData extends FieldValues>(props: TextInputFieldPr
     >
       <TextInput
         autoComplete={props.autoComplete}
+        data-testid={props.dataTestId}
         name={field.name}
         onBlur={field.onBlur}
         onChange={field.onChange}

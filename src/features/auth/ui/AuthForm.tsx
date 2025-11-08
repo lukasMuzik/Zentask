@@ -32,6 +32,7 @@ export function AuthForm(props: AuthFormProps) {
       <VStack spacing="1.5rem">
         <InputField
           control={formApi.control}
+          dataTestId="username-input"
           isRequired
           label={t('authForm.username')}
           name="username"
@@ -39,6 +40,7 @@ export function AuthForm(props: AuthFormProps) {
 
         <InputField
           control={formApi.control}
+          dataTestId="password-input"
           label={t('authForm.password')}
           name="password"
           isRequired
@@ -51,13 +53,13 @@ export function AuthForm(props: AuthFormProps) {
       </VStack>
 
       <VStack gap="0.25rem" align="stretch">
-        <Button type="submit" w="full" rightIcon={<ForwardIcon />}>
+        <Button dataTestId="auth-submit-button" type="submit" w="full" rightIcon={<ForwardIcon />}>
           {props.variant === 'register'
             ? t('authForm.buttons.register')
             : t('authForm.buttons.login')}
         </Button>
 
-        <Link to={props.variant === 'register' ? '/login' : '/register'}>
+        <Link data-testid="auth-link" to={props.variant === 'register' ? '/login' : '/register'}>
           {props.variant === 'register' ? (
             <>{t('authForm.alreadyHaveAccount')}</>
           ) : (

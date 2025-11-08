@@ -9,9 +9,11 @@ export interface ButtonProps
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   iconOnly?: ReactNode;
+  dataTestId?: string;
 }
 
 export function Button({
+  dataTestId,
   variant = 'primary',
   size = 'default',
   children,
@@ -22,7 +24,7 @@ export function Button({
 }: ButtonProps) {
   if (iconOnly) {
     return (
-      <ChakraButton variant={variant} size="icon" {...props}>
+      <ChakraButton data-testid={dataTestId} variant={variant} size="icon" {...props}>
         {iconOnly}
       </ChakraButton>
     );
@@ -30,6 +32,7 @@ export function Button({
 
   return (
     <ChakraButton
+      data-testid={dataTestId}
       leftIcon={leftIcon || undefined}
       rightIcon={rightIcon || undefined}
       variant={variant}
